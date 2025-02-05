@@ -331,7 +331,7 @@ header.lightmode .nav-links a {
 
 .imac-frame {
     position: absolute;
-    width: 750px; /* Größerer iMac */
+    width: 700px; /* Größerer iMac */
     z-index: 3;
     left: 50%;
     transform: translateX(-50%);
@@ -340,9 +340,9 @@ header.lightmode .nav-links a {
 
 .project-slides {
     position: absolute;
-    width: 635px; /* 85% der iMac-Breite */
-    height: 360px; /* Proportional angepasst */
-    top: 65px;
+    width: 585px; /* 85% der iMac-Breite */
+    height: 330px; /* Proportional angepasst */
+    top: 87px;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 3px;
@@ -818,4 +818,20 @@ p {
 
 .portfolio-content.uiux::-webkit-scrollbar-thumb:hover {
     background: #e6c058;
+}
+
+.interaction-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--text-color-light);
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.hint-icon {
+    width: 16px;
+    height: 16px;
+    animation: slideRight 1.5s ease-in-out infinite;
 }
