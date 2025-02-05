@@ -271,6 +271,7 @@ header.lightmode .nav-links a {
 .portfolio-section {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     background-color: #fff;
     color: #000;
@@ -338,7 +339,7 @@ header.lightmode .nav-links a {
     position: absolute;
     width: 635px; /* 85% der iMac-Breite */
     height: 360px; /* Proportional angepasst */
-    top: 55px;
+    top: 65px;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 3px;
@@ -441,4 +442,50 @@ header.lightmode .nav-links a {
 .hover-circle svg {
     width: 24px;
     height: 24px;
+}
+
+/* Portfolio Content Sections */
+.portfolio-content {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.portfolio-content.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Filter Buttons Styling */
+.portfolio-filter {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+}
+
+/* Masonry Grid */
+.masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.grid-item {
+    break-inside: avoid;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.grid-item:hover {
+    transform: translateY(-5px);
 }

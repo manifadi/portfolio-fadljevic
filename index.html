@@ -55,40 +55,61 @@
             <h1>PORTFOLIO</h1>
             
             <div class="portfolio-filter">
-                <button class="filter-btn active" data-filter="WEBDESIGN">WEBDESIGN</button>
-                <button class="filter-btn" data-filter="GRAFIC DESIGN">GRAFIC DESIGN</button>
-                <button class="filter-btn" data-filter="UI/UX">UI/UX</button>
+                <button class="filter-btn active" data-filter="webdesign">WEBDESIGN</button>
+                <button class="filter-btn" data-filter="graphic">GRAFIC DESIGN</button>
+                <button class="filter-btn" data-filter="uiux">UI/UX</button>
             </div>
 
-            <div class="carousel-container">
-                <div class="project-hover-box">
-                    <span class="hover-text">PROJEKT ANZEIGEN</span>
-                    <div class="hover-circle">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
+            <!-- Webdesign Content (Carousel) -->
+            <div class="portfolio-content webdesign active">
+                <div class="carousel-container">
+                    <div class="project-hover-box">
+                        <span class="hover-text">PROJEKT ANZEIGEN</span>
+                        <div class="hover-circle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <!-- iMac Frame -->
+                    <img src="assets/portfolio/iMac Transparent.png" alt="iMac Frame" class="imac-frame">
+                    
+                    <!-- Project Slides -->
+                    <div class="project-slides">
+                        <div class="project-slide prev" data-index="0" data-url="https://nmt-enzendorfer.com/">
+                            <img src="assets/portfolio/nmt-website.jpg" alt="Project 1">
+                        </div>
+                        <div class="project-slide current" data-index="1" data-url="https://www.yoga-touch.at/">
+                            <img src="assets/portfolio/yoga-touch-website.jpg" alt="Project 2">
+                        </div>
+                        <div class="project-slide next" data-index="2" data-url="https://www.holza.at/">
+                            <img src="assets/portfolio/holza-website.jpg" alt="Project 3">
+                        </div>
+                        <div class="project-slide next" data-index="3" data-url="https://golden-signals.com/">
+                            <img src="assets/portfolio/gfs-website.jpg" alt="Project 4">
+                        </div>
+                        <div class="project-slide next" data-index="4" data-url="#">
+                            <img src="assets/portfolio/drone-website.jpg" alt="Project 5">
+                        </div>
                     </div>
                 </div>
-                <!-- iMac Frame -->
-                <img src="assets/portfolio/iMac Transparent.png" alt="iMac Frame" class="imac-frame">
-                
-                <!-- Project Slides -->
-                <div class="project-slides">
-                    <div class="project-slide prev" data-index="0" data-url="https://nmt-enzendorfer.com/">
-                        <img src="assets/portfolio/nmt-website.jpg" alt="Project 1">
+            </div>
+
+            <!-- Graphic Design Content -->
+            <div class="portfolio-content graphic">
+                <div class="masonry-grid">
+                    <!-- Beispiel für Grafik-Items -->
+                    <div class="grid-item">
+                        <img src="https://orangeny.com/wp-content/uploads/placeholder-TEMP.gif" alt="Graphic Design 1">
                     </div>
-                    <div class="project-slide current" data-index="1" data-url="https://www.yoga-touch.at/">
-                        <img src="assets/portfolio/yoga-touch-website.jpg" alt="Project 2">
-                    </div>
-                    <div class="project-slide next" data-index="2" data-url="https://www.holza.at/">
-                        <img src="assets/portfolio/holza-website.jpg" alt="Project 3">
-                    </div>
-                    <div class="project-slide next" data-index="3" data-url="https://golden-signals.com/">
-                        <img src="assets/portfolio/gfs-website.jpg" alt="Project 4">
-                    </div>
-                    <div class="project-slide next" data-index="4" data-url="#">
-                        <img src="assets/portfolio/drone-website.jpg" alt="Project 5">
-                    </div>
+                    <!-- Weitere grid-items hier -->
+                </div>
+            </div>
+
+            <!-- UI/UX Content -->
+            <div class="portfolio-content uiux">
+                <div class="masonry-grid">
+                    <!-- UI/UX Items hier -->
                 </div>
             </div>
         </section>
@@ -96,6 +117,7 @@
     <!-- Am Ende des body-Tags, vor dem schließenden </body> -->
     <script src="scripts/main.js"></script>
     <script src="scripts/carousel.js"></script>
+    <script src="scripts/portfolio.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </body>
 </html>
