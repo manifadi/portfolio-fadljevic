@@ -47,7 +47,72 @@
 
         <!-- Füge die neuen Sections nach der hero-section hinzu -->
         <section class="about-section hidden-section">
-            <h1>About Me</h1>
+            <div class="headline-section">
+                <img src="./assets/mfadljevic-image-02.png" alt="Manuel Fadljevic">
+                <h1>ABOUT ME</h1>
+            </div>
+            
+            <div class="about-container">
+                <div class="about-content">
+                    <div class="education-experience">
+                        <h2>Background & Expertise</h2>
+                        <p>With roots in media technology and design, my journey began at HTBLA Leonding and flourished at the University of Applied Sciences Upper Austria. Since 2015, I've been immersed in the dynamic world of web development and design, constantly evolving with the industry.</p>
+                    </div>
+        
+                    <div class="skills-container">
+                        <h2>What I Do</h2>
+                        <div class="skills-grid">
+                            <!-- Ersetzen Sie den SVG-Platzhalter in jeder Skill Card mit diesen Icons -->
+
+                            <!-- Design Icon -->
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M24 4C12.954 4 4 12.954 4 24C4 35.046 12.954 44 24 44C35.046 44 44 35.046 44 24C44 12.954 35.046 4 24 4Z" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M24 16C19.582 16 16 19.582 16 24C16 28.418 19.582 32 24 32" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M32 24C32 19.582 28.418 16 24 16" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M24 28C26.2091 28 28 26.2091 28 24C28 21.7909 26.2091 20 24 20" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <h3>Design</h3>
+                                <p>Creating visually stunning designs using the Adobe Creative Suite and Figma, transforming concepts into compelling visual experiences.</p>
+                            </div>
+
+                            <!-- Development Icon -->
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M18 32L10 24L18 16" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M30 16L38 24L30 32" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M26 12L22 36" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <h3>Development</h3>
+                                <p>Building responsive websites with HTML, CSS, JavaScript, and PHP, enhanced by WordPress and backed by MySQL databases.</p>
+                            </div>
+
+                            <!-- UI/UX Icon -->
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M24 44C35.046 44 44 35.046 44 24C44 12.954 35.046 4 24 4C12.954 4 4 12.954 4 24C4 35.046 12.954 44 24 44Z" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M16 28C18.2091 28 20 26.2091 20 24C20 21.7909 18.2091 20 16 20C13.7909 20 12 21.7909 12 24C12 26.2091 13.7909 28 16 28Z" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M32 28C34.2091 28 36 26.2091 36 24C36 21.7909 34.2091 20 32 20C29.7909 20 28 21.7909 28 24C28 26.2091 29.7909 28 32 28Z" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M16 32C16 32 19 36 24 36C29 36 32 32 32 32" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <h3>UI/UX Design</h3>
+                                <p>Crafting intuitive user interfaces and experiences that blend aesthetics with functionality.</p>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="personal-approach">
+                        <h2>My Approach</h2>
+                        <p>Just as in tennis, my approach to projects is driven by precision and continuous improvement. I thrive on new challenges and believe in creating solutions that not only meet but exceed expectations. Working collaboratively, I bring both technical expertise and creative vision to every project.</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Portfolio Section aktualisieren -->
@@ -97,12 +162,30 @@
 
             <!-- Graphic Design Content -->
             <div class="portfolio-content graphic">
+                <!-- Ersetzen Sie den bestehenden masonry-grid Container mit diesem: -->
                 <div class="masonry-grid">
-                    <!-- Beispiel für Grafik-Items -->
+                    <!-- grid-sizer wird automatisch durch JS hinzugefügt -->
                     <div class="grid-item">
-                        <img src="https://orangeny.com/wp-content/uploads/placeholder-TEMP.gif" alt="Graphic Design 1">
+                        <img src="./assets/graphics/graphics_1.jpg" alt="Graphic Design 1" loading="lazy">
                     </div>
-                    <!-- Weitere grid-items hier -->
+                    <div class="grid-item">
+                        <img src="./assets/graphics/graphics_4.jpg" alt="Graphic Design 2" loading="lazy">
+                    </div>
+                    <div class="grid-item">
+                        <img src="./assets/graphics/graphics_5.jpg" alt="Graphic Design 3" loading="lazy">
+                    </div>
+                    <div class="grid-item">
+                        <img src="./assets/graphics/graphics_2.jpg" alt="Graphic Design 4" loading="lazy">
+                    </div>
+                    <div class="grid-item">
+                        <img src="./assets/graphics/graphics_3.png" alt="Graphic Design 5" loading="lazy">
+                    </div>
+                    <div class="grid-item">
+                        <img src="./assets/graphics/graphics_6.jpg" alt="Graphic Design 6" loading="lazy">
+                    </div>
+                    <div class="grid-item">
+                        <img src="./assets/graphics/graphics_7.jpg" alt="Graphic Design 7" loading="lazy">
+                    </div>
                 </div>
             </div>
 
@@ -119,5 +202,9 @@
     <script src="scripts/carousel.js"></script>
     <script src="scripts/portfolio.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+    <script src="scripts/masonry.js"></script>
+    
 </body>
 </html>

@@ -209,3 +209,23 @@ function handleNavigation(e) {
 document.querySelectorAll('.nav-links a, .cta-buttons a').forEach(link => {
     link.addEventListener('click', handleNavigation);
 });
+
+// ABOUT JAVASCRIPT
+// In main.js oder in einer separaten about.js
+function initAboutAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+            }
+        });
+    }, {
+        threshold: 0.2
+    });
+
+    document.querySelectorAll('.about-content > div').forEach(element => {
+        observer.observe(element);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initAboutAnimations);

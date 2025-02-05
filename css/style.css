@@ -4,6 +4,8 @@
     --primary-color: #FFD662;
     --font-primary: 'Inter', sans-serif;
     --font-display: 'Playfair Display', serif;
+    --header-height: 114px; /* Anpassen an Ihre Header-Höhe */
+
 }
 
 * {
@@ -132,6 +134,7 @@ header.lightmode .nav-links a {
 .hero-content h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
+    color: var(--text-color);
 }
 
 .highlight {
@@ -444,19 +447,6 @@ header.lightmode .nav-links a {
     height: 24px;
 }
 
-/* Portfolio Content Sections */
-.portfolio-content {
-    display: none;
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.portfolio-content.active {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-}
-
 /* Filter Buttons Styling */
 .portfolio-filter {
     display: flex;
@@ -465,27 +455,312 @@ header.lightmode .nav-links a {
     justify-content: center;
 }
 
-/* Masonry Grid */
-.masonry-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 2rem;
+/* Portfolio Content Anpassungen */
+.portfolio-content {
+    width: 100%;
     padding: 2rem;
+    overflow: hidden;
+    opacity: 1;
+    transform: none;
+}
+
+/* Portfolio Grid Container */
+.portfolio-content.graphic {
+    width: 100%;
+    height: auto;
+    min-height: calc(100vh - 250px);
+    overflow-y: scroll;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+.portfolio-content.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Scrollbar Styling */
+.portfolio-content.graphic::-webkit-scrollbar {
+    width: 8px;
+}
+
+.portfolio-content.graphic::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.portfolio-content.graphic::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+.portfolio-content.graphic::-webkit-scrollbar-thumb:hover {
+    background: #e6c058;
+}
+
+/* MASONRY GRID STYLES */
+.masonry-grid {
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.grid-sizer,
+.grid-item {
+    width: 31.33%; /* Basis-Breite für 3 Spalten */
+    margin: 1%;
 }
 
 .grid-item {
-    break-inside: avoid;
-    margin-bottom: 2rem;
-    transition: all 0.3s ease;
+    float: left;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 8px;
 }
 
 .grid-item img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: block;
+    transition: transform 0.3s ease;
+    backface-visibility: hidden;
 }
 
-.grid-item:hover {
+.grid-item:hover img {
+    transform: scale(1.03);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1200px) {
+    .grid-sizer,
+    .grid-item {
+        width: 48%; /* 2 Spalten */
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-sizer,
+    .grid-item {
+        width: 98%; /* 1 Spalte */
+    }
+}
+
+/* About Section Base */
+.about-section {
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    padding: 4rem;
+    display: flex;
+    gap: 4rem;
+}
+
+/* Headline Section Styling */
+.headline-section {
+    position: fixed;
+    left: 4rem;
+    top: calc(var(--header-height) + 4rem);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem; /* Reduziert von 2rem auf 1rem für weniger Abstand */
+    width: 300px;
+}
+
+.headline-section img {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    object-position: top; /* Focal point ganz oben */
+    border-radius: 12px;
+}
+
+.headline-section h1 {
+    position: relative;
+    left: 0;
+    top: -2.7rem; /* Verschiebt die Überschrift nach oben */
+    font-size: 4rem;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Anpassung des about-container */
+.about-container {
+    margin-left: 400px; /* Mehr Platz für die headline-section */
+    max-width: 800px;
+    height: calc(100vh - var(--header-height));
+    overflow-y: auto;
+    padding-right: 1rem;
+    padding-bottom: 10%;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 1200px) {
+    .headline-section {
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .headline-section img {
+        width: 200px;
+        height: 267px;
+    }
+
+    .about-container {
+        margin-left: 0;
+    }
+}
+
+/* Scrollable content container */
+.about-container {
+    margin-left: 360px; /* Angepasst für den Titel */
+    max-width: 800px;
+    height: calc(100vh - var(--header-height));
+    overflow-y: auto;
+    padding-right: 1rem;
+    padding-bottom: 10%;
+}
+
+/* Scrollbar Styling */
+.about-container::-webkit-scrollbar {
+    display: none
+}
+
+/* Content Styling */
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    text-align: left; /* Explizit linksbündig */
+}
+
+/* Überschriften linksbündig */
+.about-content h2 {
+    text-align: left;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+/* Text Styles */
+.about-content p {
+    line-height: 1.6;
+    color: var(--text-color);
+    opacity: 0.9;
+    text-align: left;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+    .about-section {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .about-section h1 {
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        margin-bottom: 2rem;
+        background: var(--background-color);
+        padding: 1rem 0;
+        z-index: 1;
+    }
+
+    .about-container {
+        margin-left: 0;
+        padding-right: 1rem;
+    }
+}
+
+.education-experience,
+.personal-approach {
+    max-width: 100%; /* Volle Breite des Containers */
+    margin: 0; /* Kein Auto-Margin */
+}
+
+.skills-container {
+    width: 100%;
+}
+
+/* Skills Grid anpassen */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.skill-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.skill-card:hover {
     transform: translateY(-5px);
+}
+
+.skill-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+}
+
+.skill-icon svg {
+    width: 48px;
+    height: 48px;
+    transition: transform 0.4s ease;
+}
+
+.skill-card:hover .skill-icon svg {
+    transform: scale(1.05); /* Reduziert von 1.1 auf 1.05 für subtilere Skalierung */
+}
+
+.skill-icon svg path {
+    transition: stroke-dasharray 0.6s ease, stroke-dashoffset 0.6s ease;
+}
+
+.skill-card:hover .skill-icon svg path {
+    stroke-dasharray: 40; /* Reduziert von 100 auf 50 */
+    stroke-dashoffset: -5; /* Reduziert von -20 auf -10 */
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    line-height: 1.6;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+/* Animation classes */
+.about-content > div {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.about-content > div.animate {
+    opacity: 1;
+    transform: translateY(0);
 }
