@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manuel Fadljevic - Web Developer</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo" style="cursor: pointer;">
+                <img src="./assets/mfadljevic-logo-white.png" alt="logo manuelfadljevic" id="header-logo">
+            </div>
+            <div class="nav-links">
+                <a href="#about">About me</a>
+                <a href="#portfolio" class="portfolio-btn">Portfolio</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <!-- Änderung in der h2-Zeile -->
+                <h1>Hi, I'm Manuel 👋</h1>
+                <h2>and i'm a <span class="typing-text highlight"></span></h2>
+                
+                <p class="hero-text">
+                    Bridging design and development, I offer a unique blend of creative and 
+                    technical skills. My expertise in both graphic design and web development 
+                    allows me to create visually stunning and highly functional digital 
+                    experiences.
+                </p>
+
+                <div class="cta-buttons">
+                    <a href="#portfolio" class="btn primary">View Portfolio</a>
+                    <a href="#about" class="btn secondary">about me</a>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <img src="assets/profilbild.png" alt="Manuel Fadljevic">
+            </div>
+        </section>
+
+        <!-- Füge die neuen Sections nach der hero-section hinzu -->
+        <section class="about-section hidden-section">
+            <h1>About Me</h1>
+        </section>
+
+        <!-- Portfolio Section aktualisieren -->
+        <section class="portfolio-section hidden-section">
+            <h1>PORTFOLIO</h1>
+            
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="WEBDESIGN">WEBDESIGN</button>
+                <button class="filter-btn" data-filter="GRAFIC DESIGN">GRAFIC DESIGN</button>
+                <button class="filter-btn" data-filter="UI/UX">UI/UX</button>
+            </div>
+
+            <div class="carousel-container">
+                <div class="project-hover-box">
+                    <span class="hover-text">PROJEKT ANZEIGEN</span>
+                    <div class="hover-circle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </div>
+                </div>
+                <!-- iMac Frame -->
+                <img src="assets/portfolio/iMac Transparent.png" alt="iMac Frame" class="imac-frame">
+                
+                <!-- Project Slides -->
+                <div class="project-slides">
+                    <div class="project-slide prev" data-index="0" data-url="https://nmt-enzendorfer.com/">
+                        <img src="assets/portfolio/nmt-website.jpg" alt="Project 1">
+                    </div>
+                    <div class="project-slide current" data-index="1" data-url="https://www.yoga-touch.at/">
+                        <img src="assets/portfolio/yoga-touch-website.jpg" alt="Project 2">
+                    </div>
+                    <div class="project-slide next" data-index="2" data-url="https://www.holza.at/">
+                        <img src="assets/portfolio/holza-website.jpg" alt="Project 3">
+                    </div>
+                    <div class="project-slide next" data-index="3" data-url="https://golden-signals.com/">
+                        <img src="assets/portfolio/gfs-website.jpg" alt="Project 4">
+                    </div>
+                    <div class="project-slide next" data-index="4" data-url="#">
+                        <img src="assets/portfolio/drone-website.jpg" alt="Project 5">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Am Ende des body-Tags, vor dem schließenden </body> -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/carousel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</body>
+</html>

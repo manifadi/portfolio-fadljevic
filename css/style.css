@@ -1,0 +1,444 @@
+:root {
+    --background-color: #0F0F0F;
+    --text-color: #FFFFFF;
+    --primary-color: #FFD662;
+    --font-primary: 'Inter', sans-serif;
+    --font-display: 'Playfair Display', serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    min-height: 100vh; /* Mindesthöhe auf 100% der Viewport-Höhe */
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    min-height: 100vh; /* Mindesthöhe auf 100% der Viewport-Höhe */
+    position: relative;
+}
+
+/* Header-Styles anpassen */
+header {
+    padding: 2rem 5%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--background-color);
+    z-index: 1001;
+    height: 114px; /* Fixe Höhe für Header */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.nav-links a.active {
+    color: var(--primary-color);
+}
+
+.logo img {
+    height: 70px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.portfolio-btn {
+    background-color: var(--primary-color);
+    color: #000 !important;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-btn:hover {
+    transform: translateY(-2px);
+}
+
+.portfolio-btn.active {
+    background-color: #000;
+    color: var(--primary-color) !important;
+}
+
+/* HEADER LIGHT STYLES */
+header.lightmode{
+    background-color: var(--text-color);
+}
+
+header.lightmode .nav-links a {
+    color: var(--background-color);
+}
+
+/* Sections-Padding anpassen wegen fixed Header */
+.hero, .hidden-section {
+    min-height: 100vh; /* Mindesthöhe auf 100% der Viewport-Höhe */
+    padding-top: 114px; /* Header-Höhe (70px + 2rem padding) */
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+/* Hero Section */
+.hero {
+    padding: 114px 5% 0 5%; /* Top-Padding für Header + seitliches Padding */
+    max-width: none; /* Remove max-width constraint */
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+    padding: 2rem 0;
+    z-index: 2; /* Über dem Bild */
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.hero-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.highlight {
+    color: var(--primary-color);
+    font-style: italic;
+}
+
+/* Wave-Animation entfernen und neue Typing-Animation hinzufügen */
+.typing-text {
+    border-right: 2px solid var(--primary-color);
+    padding-right: 5px;
+    white-space: nowrap;
+}
+
+.typing-text.typing {
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { border-color: transparent }
+    50% { border-color: var(--primary-color) }
+}
+
+.hero-text {
+    color: #999;
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: transform 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn.primary {
+    background-color: var(--primary-color);
+    color: #000;
+}
+
+.btn.secondary {
+    border: 1px solid #333;
+    color: var(--text-color);
+}
+
+.hero-image {
+    position: absolute;
+    right: 5%;
+    bottom: 0;
+    width: 45%;
+    height: calc(100vh - 114px); /* Volle Höhe minus Header */
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom;
+}
+
+/* HIDDEN SECTION */
+.hidden-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s;
+    z-index: 10;
+}
+
+.hidden-section h1 {
+    font-size: 3rem;
+    color: var(--text-color);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.section-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.section-active h1 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animation für den Übergang */
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--primary-color);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    z-index: 1002; /* Erhöht über den Header z-index von 1001 */
+}
+
+/* Füge diese Klasse zur hero section hinzu */
+.hero-section {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease, visibility 0.5s;
+}
+
+.hero-section.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Portfolio Section Styles aktualisieren */
+.portfolio-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    color: #000;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.portfolio-section h1 {
+    font-size: 3rem; /* Gleiche Größe wie main section */
+    margin-bottom: 12px; /* Reduzierter Abstand */
+    font-weight: 700;
+    color: #000;
+}
+
+/* Filter Button Container anpassen */
+.portfolio-filter {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 24px; /* Reduzierter Abstand */
+    z-index: 4;
+}
+
+.filter-btn {
+    background: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    color: #000;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    border-color: var(--primary-color);
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: #000;
+    border-color: var(--primary-color);
+}
+
+/* Carousel Container und Slides anpassen */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.imac-frame {
+    position: absolute;
+    width: 750px; /* Größerer iMac */
+    z-index: 3;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.project-slides {
+    position: absolute;
+    width: 635px; /* 85% der iMac-Breite */
+    height: 360px; /* Proportional angepasst */
+    top: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 3px;
+    z-index: 2;
+}
+
+.project-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+    opacity: 0;
+    z-index: -1;
+}
+
+.project-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.project-slide.prev {
+    transform: translateX(-110%);
+    opacity: 1;
+    z-index: 1;
+}
+
+.project-slide.current {
+    transform: translateX(0);
+    opacity: 1;
+    z-index: 1;
+}
+
+.project-slide.next {
+    transform: translateX(110%);
+    opacity: 1;
+    z-index: 1;
+}
+
+/* Navigation Dots */
+.carousel-nav {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.nav-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-dot.active {
+    background-color: var(--primary-color);
+}
+
+.project-hover-box {
+    position: absolute;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 8px 12px 8px 24px;
+    border-radius: 100px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 4; /* Höher als der iMac-Frame */
+    gap: 15px;
+}
+
+.hover-text {
+    font-size: 1rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.hover-circle {
+    width: 48px;
+    height: 48px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hover-circle svg {
+    width: 24px;
+    height: 24px;
+}
