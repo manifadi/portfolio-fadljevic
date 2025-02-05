@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const typeWriter = new TypeWriter(
         document.querySelector('.typing-text'),
         [
-            'webdeveloper.',
+            'Webdeveloper.',
             'UI/UX Designer.',
             'Fullstack Developer.',
             'Graphic Designer.'

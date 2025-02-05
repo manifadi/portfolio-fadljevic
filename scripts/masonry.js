@@ -29,28 +29,29 @@ document.addEventListener('DOMContentLoaded', function() {
         // ImagesLoaded für besseres Laden
         imagesLoaded(grid, function() {
             grid.style.opacity = "1";
+            masonry.layout();
         });
     });
 
     // Event Listener für Filter Buttons
-    const graphicFilterBtn = document.querySelector('.filter-btn[data-filter="graphic"]');
-    if (graphicFilterBtn) {
-        graphicFilterBtn.addEventListener('click', function() {
-            // Finde den zugehörigen Content
-            const graphicContent = document.querySelector('.portfolio-content.graphic');
-            if (graphicContent) {
-                // Kurze Verzögerung für Animation
+    const filterButtons = document.querySelectorAll('.filter-btn[data-filter="graphic"], .filter-btn[data-filter="uiux"]');
+    
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const filterValue = this.getAttribute('data-filter');
+            const content = document.querySelector(`.portfolio-content.${filterValue}`);
+            
+            if (content) {
                 setTimeout(() => {
-                    // Finde das Masonry-Grid innerhalb des Contents
-                    const grid = graphicContent.querySelector('.masonry-grid');
+                    const grid = content.querySelector('.masonry-grid');
                     if (grid && masonryInstances.has(grid)) {
                         const masonry = masonryInstances.get(grid);
                         masonry.layout();
                     }
-                }, 350); // Kleine Verzögerung für bessere Transition
+                }, 350);
             }
         });
-    }
+    });
 
     // Debounced Resize Handler
     let resizeTimeout;
@@ -60,11 +61,22 @@ document.addEventListener('DOMContentLoaded', function() {
             masonryInstances.forEach(masonry => {
                 const grid = masonry.element;
                 const content = grid.closest('.portfolio-content');
-                // Nur Layout updaten wenn der Content sichtbar ist
                 if (content && content.classList.contains('active')) {
                     masonry.layout();
                 }
             });
         }, 150);
+    });
+
+    // Zusätzlicher Handler für iframe Laden
+    const iframes = document.querySelectorAll('.portfolio-content.uiux iframe');
+    iframes.forEach(iframe => {
+        iframe.addEventListener('load', () => {
+            const grid = iframe.closest('.masonry-grid');
+            if (grid && masonryInstances.has(grid)) {
+                const masonry = masonryInstances.get(grid);
+                masonry.layout();
+            }
+        });
     });
 });

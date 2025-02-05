@@ -458,14 +458,14 @@ header.lightmode .nav-links a {
 /* Portfolio Content Anpassungen */
 .portfolio-content {
     width: 100%;
-    padding: 2rem;
     overflow: hidden;
     opacity: 1;
     transform: none;
 }
 
 /* Portfolio Grid Container */
-.portfolio-content.graphic {
+.portfolio-content.graphic,
+.portfolio-content.uiux {
     width: 100%;
     height: auto;
     min-height: calc(100vh - 250px);
@@ -763,4 +763,59 @@ p {
 .about-content > div.animate {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* FIGMA IFRAME STYLES */
+.portfolio-content.uiux .masonry-grid {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.portfolio-content.uiux .grid-item {
+    margin-bottom: 30px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-content.uiux .grid-item iframe {
+    width: 100%;
+    border: none;
+    transition: all 0.3s ease;
+    aspect-ratio: 16/9;
+}
+
+/* Responsive Anpassungen für Figma Frames */
+@media (max-width: 1200px) {
+    .portfolio-content.uiux .grid-sizer,
+    .portfolio-content.uiux .grid-item {
+        width: 48%;
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-content.uiux .grid-sizer,
+    .portfolio-content.uiux .grid-item {
+        width: 98%;
+    }
+}
+
+/* Scrollbar für UI/UX Bereich */
+.portfolio-content.uiux::-webkit-scrollbar {
+    width: 8px;
+}
+
+.portfolio-content.uiux::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.portfolio-content.uiux::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+.portfolio-content.uiux::-webkit-scrollbar-thumb:hover {
+    background: #e6c058;
 }
