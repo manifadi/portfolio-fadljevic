@@ -1,0 +1,90 @@
+{
+  "en": {
+    "meta": {
+      "title": "Manuel Fadljevic - Web Developer"
+    },
+    "nav": {
+      "about": "About me",
+      "portfolio": "Portfolio"
+    },
+    "hero": {
+      "greeting": "Hi, I'm Manuel 👋",
+      "occupation": "and I'm a",
+      "description": "Bridging design and development, I offer a unique blend of creative and technical skills. My expertise in both graphic design and web development allows me to create visually stunning and highly functional digital experiences.",
+      "viewPortfolio": "View Portfolio",
+      "aboutMe": "about me"
+    },
+    "about": {
+      "title": "ABOUT ME",
+      "backgroundTitle": "Background & Expertise",
+      "backgroundText": "With roots in media technology and design, my journey began at HTBLA Leonding and flourished at the University of Applied Sciences Upper Austria. Since 2015, I've been immersed in the dynamic world of web development and design, constantly evolving with the industry.",
+      "whatIDo": "What I Do",
+      "design": {
+        "title": "Design",
+        "description": "Creating visually stunning designs using the Adobe Creative Suite and Figma, transforming concepts into compelling visual experiences."
+      },
+      "development": {
+        "title": "Development",
+        "description": "Building responsive websites with HTML, CSS, JavaScript, and PHP, enhanced by WordPress and backed by MySQL databases."
+      },
+      "uiux": {
+        "title": "UI/UX Design",
+        "description": "Crafting intuitive user interfaces and experiences that blend aesthetics with functionality."
+      },
+      "approachTitle": "My Approach",
+      "approachText": "Just as in tennis, my approach to projects is driven by precision and continuous improvement. I thrive on new challenges and believe in creating solutions that not only meet but exceed expectations. Working collaboratively, I bring both technical expertise and creative vision to every project."
+    },
+    "portfolio": {
+      "title": "PORTFOLIO",
+      "webdesign": "WEBDESIGN",
+      "graphic": "GRAPHIC DESIGN",
+      "uiux": "UI/UX",
+      "hint": "Click or swipe to discover more projects",
+      "showProject": "SHOW PROJECT"
+    }
+  },
+  "de": {
+    "meta": {
+      "title": "Manuel Fadljevic - Webentwickler"
+    },
+    "nav": {
+      "about": "Über mich",
+      "portfolio": "Portfolio"
+    },
+    "hero": {
+      "greeting": "Hi, ich bin Manuel 👋",
+      "occupation": "und ich bin",
+      "description": "Als Brücke zwischen Design und Entwicklung biete ich eine einzigartige Mischung aus kreativen und technischen Fähigkeiten. Meine Expertise in Grafikdesign und Webentwicklung ermöglicht es mir, visuell beeindruckende und hochfunktionale digitale Erlebnisse zu schaffen.",
+      "viewPortfolio": "Portfolio ansehen",
+      "aboutMe": "Über mich"
+    },
+    "about": {
+      "title": "ÜBER MICH",
+      "backgroundTitle": "Hintergrund & Expertise",
+      "backgroundText": "Mit Wurzeln in Medientechnik und Design begann meine Reise an der HTBLA Leonding und entwickelte sich an der FH Oberösterreich weiter. Seit 2015 bin ich in der dynamischen Welt der Webentwicklung und des Designs tätig und entwickle mich ständig mit der Branche weiter.",
+      "whatIDo": "Was ich mache",
+      "design": {
+        "title": "Design",
+        "description": "Erstellung visuell beeindruckender Designs mit Adobe Creative Suite und Figma, die Konzepte in überzeugende visuelle Erlebnisse verwandeln."
+      },
+      "development": {
+        "title": "Entwicklung",
+        "description": "Entwicklung responsiver Websites mit HTML, CSS, JavaScript und PHP, erweitert durch WordPress und gestützt durch MySQL-Datenbanken."
+      },
+      "uiux": {
+        "title": "UI/UX Design",
+        "description": "Gestaltung intuitiver Benutzeroberflächen und Erlebnisse, die Ästhetik mit Funktionalität verbinden."
+      },
+      "approachTitle": "Mein Ansatz",
+      "approachText": "Wie beim Tennis ist mein Projektansatz von Präzision und kontinuierlicher Verbesserung geprägt. Ich liebe neue Herausforderungen und glaube daran, Lösungen zu schaffen, die die Erwartungen nicht nur erfüllen, sondern übertreffen. In der Zusammenarbeit bringe ich sowohl technische Expertise als auch kreative Vision in jedes Projekt ein."
+    },
+    "portfolio": {
+      "title": "PORTFOLIO",
+      "webdesign": "WEBDESIGN",
+      "graphic": "GRAFIKDESIGN",
+      "uiux": "UI/UX",
+      "hint": "Klicken oder wischen Sie, um weitere Projekte zu entdecken",
+      "showProject": "PROJEKT ANZEIGEN"
+    }
+  }
+}

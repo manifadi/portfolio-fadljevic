@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manuel Fadljevic - Web Developer</title>
+    <title data-i18n="meta.title">Manuel Fadljevic - Web Developer</title>
     <link rel="icon" type="image/png" href="./assets/ico/favicon.ico"/>
     <link rel="icon" type="image/png" href="./assets/ico/favicon-portfolio.png"/>
     <link rel="stylesheet" href="css/style.css">
@@ -16,8 +16,13 @@
                 <img src="./assets/mfadljevic-logo-white.png" alt="logo manuelfadljevic" id="header-logo">
             </div>
             <div class="nav-links">
-                <a href="#about">About me</a>
-                <a href="#portfolio" class="portfolio-btn">Portfolio</a>
+                <a href="#about" data-i18n="nav.about">About me</a>
+                <a href="#portfolio" class="portfolio-btn" data-i18n="nav.portfolio">Portfolio</a>
+                <button class="language-toggle">
+                    <span class="current-lang">EN</span>
+                    <span class="separator">/</span>
+                    <span class="other-lang">DE</span>
+                </button>
             </div>
         </nav>
     </header>
@@ -25,11 +30,10 @@
     <main>
         <section class="hero">
             <div class="hero-content">
-                <!-- Änderung in der h2-Zeile -->
-                <h1>Hi, I'm Manuel 👋</h1>
-                <h2>and i'm a <span class="typing-text highlight"></span></h2>
+                <h1 data-i18n="hero.greeting">Hi, I'm Manuel 👋</h1>
+                <h2><span data-i18n="hero.occupation">and I'm a</span> <span class="typing-text highlight"></span></h2>
                 
-                <p class="hero-text">
+                <p class="hero-text" data-i18n="hero.description">
                     Bridging design and development, I offer a unique blend of creative and 
                     technical skills. My expertise in both graphic design and web development 
                     allows me to create visually stunning and highly functional digital 
@@ -37,8 +41,8 @@
                 </p>
 
                 <div class="cta-buttons">
-                    <a href="#portfolio" class="btn primary">View Portfolio</a>
-                    <a href="#about" class="btn secondary">about me</a>
+                    <a href="#portfolio" class="btn primary" data-i18n="hero.viewPortfolio">View Portfolio</a>
+                    <a href="#about" class="btn secondary" data-i18n="hero.aboutMe">about me</a>
                 </div>
             </div>
 
@@ -47,26 +51,26 @@
             </div>
         </section>
 
-        <!-- Füge die neuen Sections nach der hero-section hinzu -->
         <section class="about-section hidden-section">
-            <div class="headline-section">
-                <img src="./assets/mfadljevic-image-02.png" alt="Manuel Fadljevic">
-                <h1>ABOUT ME</h1>
+            <!-- Left Column -->
+            <div class="about-left-column">
+                <div class="headline-section">
+                    <img src="./assets/mfadljevic-image-02.png" alt="Manuel Fadljevic">
+                    <h1 data-i18n="about.title">ABOUT ME</h1>
+                </div>
             </div>
-            
-            <div class="about-container">
+        
+            <!-- Right Column -->
+            <div class="about-right-column">
                 <div class="about-content">
                     <div class="education-experience">
-                        <h2>Background & Expertise</h2>
-                        <p>With roots in media technology and design, my journey began at HTBLA Leonding and flourished at the University of Applied Sciences Upper Austria. Since 2015, I've been immersed in the dynamic world of web development and design, constantly evolving with the industry.</p>
+                        <h2 data-i18n="about.backgroundTitle">Background & Expertise</h2>
+                        <p data-i18n="about.backgroundText">With roots in media technology and design, my journey began at HTBLA Leonding and flourished at the University of Applied Sciences Upper Austria. Since 2015, I've been immersed in the dynamic world of web development and design, constantly evolving with the industry.</p>
                     </div>
         
                     <div class="skills-container">
-                        <h2>What I Do</h2>
+                        <h2 data-i18n="about.whatIDo">What I Do</h2>
                         <div class="skills-grid">
-                            <!-- Ersetzen Sie den SVG-Platzhalter in jeder Skill Card mit diesen Icons -->
-
-                            <!-- Design Icon -->
                             <div class="skill-card">
                                 <div class="skill-icon">
                                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -76,11 +80,10 @@
                                         <path d="M24 28C26.2091 28 28 26.2091 28 24C28 21.7909 26.2091 20 24 20" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </div>
-                                <h3>Design</h3>
-                                <p>Creating visually stunning designs using the Adobe Creative Suite and Figma, transforming concepts into compelling visual experiences.</p>
+                                <h3 data-i18n="about.design.title">Design</h3>
+                                <p data-i18n="about.design.description">Creating visually stunning designs using the Adobe Creative Suite and Figma, transforming concepts into compelling visual experiences.</p>
                             </div>
 
-                            <!-- Development Icon -->
                             <div class="skill-card">
                                 <div class="skill-icon">
                                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -89,11 +92,10 @@
                                         <path d="M26 12L22 36" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </div>
-                                <h3>Development</h3>
-                                <p>Building responsive websites with HTML, CSS, JavaScript, and PHP, enhanced by WordPress and backed by MySQL databases.</p>
+                                <h3 data-i18n="about.development.title">Development</h3>
+                                <p data-i18n="about.development.description">Building responsive websites with HTML, CSS, JavaScript, and PHP, enhanced by WordPress and backed by MySQL databases.</p>
                             </div>
 
-                            <!-- UI/UX Icon -->
                             <div class="skill-card">
                                 <div class="skill-icon">
                                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -103,42 +105,42 @@
                                         <path d="M16 32C16 32 19 36 24 36C29 36 32 32 32 32" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </div>
-                                <h3>UI/UX Design</h3>
-                                <p>Crafting intuitive user interfaces and experiences that blend aesthetics with functionality.</p>
+                                <h3 data-i18n="about.uiux.title">UI/UX Design</h3>
+                                <p data-i18n="about.uiux.description">Crafting intuitive user interfaces and experiences that blend aesthetics with functionality.</p>
                             </div>
                         </div>
                     </div>
         
                     <div class="personal-approach">
-                        <h2>My Approach</h2>
-                        <p>Just as in tennis, my approach to projects is driven by precision and continuous improvement. I thrive on new challenges and believe in creating solutions that not only meet but exceed expectations. Working collaboratively, I bring both technical expertise and creative vision to every project.</p>
+                        <h2 data-i18n="about.approachTitle">My Approach</h2>
+                        <p data-i18n="about.approachText">Just as in tennis, my approach to projects is driven by precision and continuous improvement. I thrive on new challenges and believe in creating solutions that not only meet but exceed expectations. Working collaboratively, I bring both technical expertise and creative vision to every project.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Portfolio Section aktualisieren -->
         <section class="portfolio-section hidden-section">
-            <h1>PORTFOLIO</h1>
+            <h1 data-i18n="portfolio.title">PORTFOLIO</h1>
             
             <div class="portfolio-filter">
-                <button class="filter-btn active" data-filter="webdesign">WEBDESIGN</button>
-                <button class="filter-btn" data-filter="graphic">GRAFIC DESIGN</button>
-                <button class="filter-btn" data-filter="uiux">UI/UX</button>
+                <button class="filter-btn active" data-filter="webdesign" data-i18n="portfolio.webdesign">WEBDESIGN</button>
+                <button class="filter-btn" data-filter="graphic" data-i18n="portfolio.graphic">GRAPHIC DESIGN</button>
+                <button class="filter-btn" data-filter="uiux" data-i18n="portfolio.uiux">UI/UX</button>
             </div>
 
-            <p class="interaction-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hint-icon">
-                    <path d="M9 18l6-6-6-6"/>
-                </svg>
-                Klicken oder wischen Sie, um weitere Projekte zu entdecken
-            </p>
-
-            <!-- Webdesign Content (Carousel) -->
+            <!-- Portfolio Content bleibt strukturell gleich, nur Text-Elemente bekommen data-i18n -->
             <div class="portfolio-content webdesign active">
+
+
+                <p class="interaction-hint">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hint-icon">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                    <span data-i18n="portfolio.hint">Click or swipe to discover more projects</span>
+                </p>
                 <div class="carousel-container">
                     <div class="project-hover-box">
-                        <span class="hover-text">PROJEKT ANZEIGEN</span>
+                        <span class="hover-text" data-i18n="portfolio.showProject">SHOW PROJECT</span>
                         <div class="hover-circle">
                             <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
                                 <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -230,6 +232,7 @@
     <script src="scripts/main.js"></script>
     <script src="scripts/carousel.js"></script>
     <script src="scripts/portfolio.js"></script>
+    <script src="scripts/language.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>

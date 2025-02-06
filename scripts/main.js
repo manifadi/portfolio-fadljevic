@@ -6,12 +6,8 @@ function calculateAndSetHeight() {
     const availableHeight = window.innerHeight - headerHeight;
     
     // Hero-Section auf verfügbare Höhe setzen
-    const heroSection = document.querySelector('.hero');
+    const heroSection = document.querySelector('main');
     heroSection.style.height = `${availableHeight}px`;
-    
-    // Bild-Container und Bild anpassen
-    const heroImage = document.querySelector('.hero-image');
-    heroImage.style.height = `${availableHeight}px`;
 }
 
 // Initial ausführen

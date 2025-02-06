@@ -15,31 +15,30 @@
 }
 
 body {
+    max-width: 100vw;
     background-color: var(--background-color);
     color: var(--text-color);
     font-family: var(--font-primary);
     line-height: 1.6;
     min-height: 100vh; /* Mindesthöhe auf 100% der Viewport-Höhe */
     overflow: hidden;
-    margin: 0;
-    padding: 0;
+    display: grid;
+    grid-template-rows: auto 1fr; /* Header auto, main nimmt Rest */
 }
 
 main {
-    min-height: 100vh; /* Mindesthöhe auf 100% der Viewport-Höhe */
     position: relative;
 }
 
 /* Header-Styles anpassen */
 header {
     padding: 2rem 5%;
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
     background-color: var(--background-color);
     z-index: 1001;
-    height: 114px; /* Fixe Höhe für Header */
 }
 
 nav {
@@ -87,19 +86,48 @@ nav {
     color: var(--primary-color) !important;
 }
 
+/* Language Toggle Styles */
+.language-toggle {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    margin-left: 20px;
+    transition: opacity 0.3s ease;
+}
+
+.language-toggle:hover {
+    opacity: 0.8;
+}
+
+.language-toggle .separator {
+    margin: 0 5px;
+    opacity: 0.5;
+}
+
+.language-toggle .current-lang {
+    font-weight: 600;
+}
+
+.language-toggle .other-lang {
+    opacity: 0.7;
+}
+
 /* HEADER LIGHT STYLES */
 header.lightmode{
     background-color: var(--text-color);
 }
 
+header.lightmode .language-toggle,
 header.lightmode .nav-links a {
     color: var(--background-color);
 }
 
 /* Sections-Padding anpassen wegen fixed Header */
 .hero, .hidden-section {
-    min-height: 100vh; /* Mindesthöhe auf 100% der Viewport-Höhe */
-    padding-top: 114px; /* Header-Höhe (70px + 2rem padding) */
     margin: 0;
     position: absolute;
     width: 100%;
@@ -112,8 +140,7 @@ header.lightmode .nav-links a {
     max-width: 1400px;
     width: 100%;
     margin: 0 auto;
-    padding-top: 114px; /* Nur top padding für den Header-Abstand */
-    padding: 114px 2rem 0 2.4rem;
+    padding: 0 2rem 0 2.4rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -122,8 +149,8 @@ header.lightmode .nav-links a {
 
 .hero-content {
     flex: 1;
-    max-width: 600px;
-    padding: 2rem 0;
+    max-width: 640px;
+    padding: 2rem 0 14vh;
     z-index: 2;
 }
 
@@ -281,8 +308,8 @@ header.lightmode .nav-links a {
     align-items: center;
     background-color: #fff;
     color: #000;
-    min-height: 100vh;
     width: 100%;
+    max-height: 100%;
 }
 
 .portfolio-section h1 {
@@ -319,6 +346,35 @@ header.lightmode .nav-links a {
     background-color: var(--primary-color);
     color: #000;
     border-color: var(--primary-color);
+}.interaction-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    color: var(--text-color-light);
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.hint-icon {
+    width: 16px;
+    height: 16px;
+    animation: slideRight 1.5s ease-in-out infinite;
+}
+
+@keyframes slideRight {
+    0% {
+        transform: translateX(-3px);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translateX(3px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-3px);
+        opacity: 0.5;
+    }
 }
 
 /* Carousel Container und Slides anpassen */
@@ -471,7 +527,6 @@ header.lightmode .nav-links a {
 .portfolio-content.uiux {
     width: 100%;
     height: auto;
-    min-height: calc(100vh - 250px);
     overflow-y: scroll;
     opacity: 1 !important;
     transform: none !important;
@@ -536,153 +591,76 @@ header.lightmode .nav-links a {
     transform: scale(1.03);
 }
 
-/* Responsive Breakpoints */
-@media (max-width: 1200px) {
-    .grid-sizer,
-    .grid-item {
-        width: 48%; /* 2 Spalten */
-    }
-}
-
-@media (max-width: 768px) {
-    .grid-sizer,
-    .grid-item {
-        width: 98%; /* 1 Spalte */
-    }
-}
-
 /* About Section Base */
 .about-section {
+    max-height: 100%;
     position: absolute;
-    top: var(--header-height);
     left: 0;
     width: 100%;
-    height: calc(100vh - var(--header-height));
-    padding: 4rem;
     display: flex;
-    gap: 4rem;
+    padding: 2rem;
+    overflow-y: hidden;
 }
 
-/* Headline Section Styling */
+/* Left Column - Title and Image */
+.about-left-column {
+    width: 360px;
+    flex-shrink: 0;
+    position: sticky;
+    top: calc(var(--header-height) + 2rem);
+    height: fit-content;
+    padding: 2rem;
+}
+
 .headline-section {
-    position: fixed;
-    left: 4rem;
-    top: calc(var(--header-height) + 4rem);
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem; /* Reduziert von 2rem auf 1rem für weniger Abstand */
-    width: 300px;
+    gap: 1rem;
 }
 
 .headline-section img {
-    width: 300px;
-    height: 400px;
+    width: 100%;
+    height: 350px; /* Reduziert von 500px auf 350px */
     object-fit: cover;
-    object-position: top; /* Focal point ganz oben */
+    object-position: top;
     border-radius: 12px;
 }
 
 .headline-section h1 {
     position: relative;
-    left: 0;
-    top: -2.7rem; /* Verschiebt die Überschrift nach oben */
-    font-size: 4rem;
-    margin: 0;
+    font-size: 3.4rem;
+    margin-top: -2.5rem;
     white-space: nowrap;
+    z-index: 1;
 }
 
-/* Anpassung des about-container */
-.about-container {
-    margin-left: 400px; /* Mehr Platz für die headline-section */
-    max-width: 800px;
-    height: calc(100vh - var(--header-height));
-    overflow-y: auto;
-    padding-right: 1rem;
-    padding-bottom: 10%;
+/* Right Column - Content */
+.about-right-column {
+    max-height: 100%;
+    flex: 1;
+    padding: 2rem;
+    margin-top: 0; /* Entferne den Top-Margin */
+    overflow-y: scroll;
 }
 
-/* Responsive Anpassungen */
-@media (max-width: 1200px) {
-    .headline-section {
-        position: relative;
-        left: 0;
-        top: 0;
-        width: 100%;
-        margin-bottom: 2rem;
-    }
-
-    .headline-section img {
-        width: 200px;
-        height: 267px;
-    }
-
-    .about-container {
-        margin-left: 0;
-    }
-}
-
-/* Scrollable content container */
-.about-container {
-    margin-left: 360px; /* Angepasst für den Titel */
-    max-width: 800px;
-    height: calc(100vh - var(--header-height));
-    overflow-y: auto;
-    padding-right: 1rem;
-    padding-bottom: 10%;
-}
-
-/* Scrollbar Styling */
-.about-container::-webkit-scrollbar {
-    display: none
-}
-
-/* Content Styling */
 .about-content {
+    height: 100%;
     display: flex;
     flex-direction: column;
     gap: 4rem;
-    text-align: left; /* Explizit linksbündig */
 }
 
-/* Überschriften linksbündig */
-.about-content h2 {
-    text-align: left;
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
+/* Rest der bestehenden Styles bleiben gleich */
+.education-experience,
+.personal-approach {
+    max-width: 100%;
+    margin: 0;
 }
 
-/* Text Styles */
-.about-content p {
-    line-height: 1.6;
-    color: var(--text-color);
-    opacity: 0.9;
-    text-align: left;
-}
-
-/* Responsive Anpassungen */
-@media (max-width: 768px) {
-    .about-section {
-        flex-direction: column;
-        padding: 1rem;
-    }
-
-    .about-section h1 {
-        position: sticky;
-        top: 0;
-        left: 0;
-        width: 100%;
-        margin-bottom: 2rem;
-        background: var(--background-color);
-        padding: 1rem 0;
-        z-index: 1;
-    }
-
-    .about-container {
-        margin-left: 0;
-        padding-right: 1rem;
-    }
+.skills-container {
+    width: 100%;
 }
 
 .education-experience,
@@ -698,7 +676,7 @@ header.lightmode .nav-links a {
 /* Skills Grid anpassen */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-top: 2rem;
 }
@@ -789,8 +767,78 @@ p {
     aspect-ratio: 16/9;
 }
 
-/* Responsive Anpassungen für Figma Frames */
+/* Scrollbar für UI/UX Bereich */
+.about-section::-webkit-scrollbar,
+.about-right-column::-webkit-scrollbar,
+.portfolio-content.uiux::-webkit-scrollbar {
+    width: 8px;
+}
+
+.about-section::-webkit-scrollbar-track,
+.about-right-column::-webkit-scrollbar-track,
+.portfolio-content.uiux::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+
+.about-section::-webkit-scrollbar-thumb,
+.about-right-column::-webkit-scrollbar-thumb,
+.portfolio-content.uiux::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+.about-section::-webkit-scrollbar-thumb:hover,
+.about-right-column::-webkit-scrollbar-thumb:hover,
+.portfolio-content.uiux::-webkit-scrollbar-thumb:hover {
+    background: #e6c058;
+}
+
+/* Responsive Breakpoints */
 @media (max-width: 1200px) {
+    /* GRID RASTER MANSORY */
+    .grid-sizer,
+    .grid-item {
+        width: 48%; /* 2 Spalten */
+    }
+
+    /*ABOUT CODE*/
+    .about-section {
+        flex-direction: column;
+        padding: 1rem;
+        overflow-y: auto; /* Behält das Scrolling */
+        justify-content: flex-start;
+    }
+
+    .about-left-column {
+        width: 100%;
+        position: relative;
+        padding: 1rem;
+        margin-bottom: 2rem;
+        top: 0;
+    }
+
+    .headline-section img {
+        height: 250px; /* Noch kleiner auf Tablets */
+        width: 200px;
+        margin: 0;
+    }
+
+    .about-right-column {
+        padding: 1rem;
+        max-width: 100%;
+        max-height: initial;
+        height: fit-content;
+        overflow-y: visible; /* Ändere zu visible */
+    }
+
+    .about-content {
+        max-height: initial;
+        height: fit-content;
+        padding: 0 0 2rem 0;
+    }
+
+    /* Responsive Anpassungen für Figma Frames */
     .portfolio-content.uiux .grid-sizer,
     .portfolio-content.uiux .grid-item {
         width: 48%;
@@ -798,43 +846,37 @@ p {
 }
 
 @media (max-width: 768px) {
+    .hero{
+        flex-direction: column;
+    }
+
+    .grid-sizer,
+    .grid-item {
+        width: 98%; /* 1 Spalte */
+    }
+
+    /* ABOUT STYLES MOBILE */
+    .about-section {
+        padding: 0.5rem;
+    }
+
+    .about-left-column,
+    .about-right-column {
+        padding: 0.5rem;
+    }
+
+    .headline-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .headline-section img {
+        height: 200px; /* Noch kleiner auf Mobilgeräten */
+        width: 150px;
+    }
+
+    /* Responsive Anpassungen für Figma Frames */
     .portfolio-content.uiux .grid-sizer,
     .portfolio-content.uiux .grid-item {
         width: 98%;
     }
-}
-
-/* Scrollbar für UI/UX Bereich */
-.portfolio-content.uiux::-webkit-scrollbar {
-    width: 8px;
-}
-
-.portfolio-content.uiux::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 4px;
-}
-
-.portfolio-content.uiux::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 4px;
-}
-
-.portfolio-content.uiux::-webkit-scrollbar-thumb:hover {
-    background: #e6c058;
-}
-
-.interaction-hint {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
-    color: var(--text-color-light);
-    font-size: 0.9rem;
-    opacity: 0.8;
-}
-
-.hint-icon {
-    width: 16px;
-    height: 16px;
-    animation: slideRight 1.5s ease-in-out infinite;
 }
