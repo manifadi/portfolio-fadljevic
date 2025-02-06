@@ -109,12 +109,16 @@ header.lightmode .nav-links a {
 
 /* Hero Section */
 .hero {
-    padding: 114px 5% 0 5%; /* Top-Padding für Header + seitliches Padding */
-    max-width: none; /* Remove max-width constraint */
-    margin: 0;
+    padding: 114px 5% 0 5%;
+    max-width: 1400px; /* Maximale Breite hinzugefügt */
+    width: 100%;
+    margin: 0 auto; /* Auto margin für Zentrierung */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative; /* Geändert von absolute zu relative */
+    left: 50%; /* Entfernt */
+    transform: translateX(-50%); /* Entfernt */
 }
 
 .hero-content {
@@ -192,12 +196,13 @@ header.lightmode .nav-links a {
     color: var(--text-color);
 }
 
+/* Anpassung der hero-image Position */
 .hero-image {
-    position: absolute;
-    right: 5%;
+    position: relative; /* Geändert von absolute zu relative */
+    right: 0;
     bottom: 0;
     width: 45%;
-    height: calc(100vh - 114px); /* Volle Höhe minus Header */
+    height: calc(100vh - 114px);
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
