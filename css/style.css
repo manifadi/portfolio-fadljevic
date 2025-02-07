@@ -4,8 +4,16 @@
     --primary-color: #FFD662;
     --font-primary: 'Inter', sans-serif;
     --font-display: 'Playfair Display', serif;
-    --header-height: 114px; /* Anpassen an Ihre Header-Höhe */
 
+    /* Neue Typografie-Variablen mit clamp() */
+    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
+    --font-size-h2: clamp(1.8rem, 3.5vw, 2.5rem);
+    --font-size-h3: clamp(1.2rem, 2.5vw, 1.5rem);
+    --font-size-p: clamp(0.9rem, 1.8vw, 1.1rem);
+    --font-size-button: clamp(0.8rem, 1.6vw, 1rem);
+    
+    /* Logo Größe */
+    --logo-height: clamp(40px, 8vw, 70px);
 }
 
 * {
@@ -54,7 +62,7 @@ nav {
 }
 
 .logo img {
-    height: 70px;
+    height: var(--logo-height);
 }
 
 .nav-links {
@@ -67,12 +75,14 @@ nav {
     color: var(--text-color);
     text-decoration: none;
     font-weight: 500;
+    font-size: var(--font-size-button);
 }
 
 .portfolio-btn {
     background-color: var(--primary-color);
     color: #000 !important;
-    padding: 0.75rem 2rem;
+    padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(1rem, 3vw, 2rem);
+    font-size: var(--font-size-button);
     border-radius: 50px;
     transition: transform 0.3s ease;
 }
@@ -94,7 +104,7 @@ nav {
     cursor: pointer;
     padding: 5px 10px;
     font-family: 'Inter', sans-serif;
-    font-size: 14px;
+    font-size: clamp(0.75rem, 1.4vw, 14px);
     margin-left: 20px;
     transition: opacity 0.3s ease;
 }
@@ -155,15 +165,15 @@ header.lightmode .nav-links a {
 }
 
 .hero-content h1 {
-    font-size: 4rem;
+    font-size: var(--font-size-h1);
+    margin-bottom: clamp(0.5rem, 2vw, 1rem);
     font-weight: 700;
-    margin-bottom: 1rem;
     line-height: 1.1;
 }
 
 .hero-content h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+    font-size: var(--font-size-h2);
+    margin-bottom: clamp(1rem, 3vw, 2rem);
     color: var(--text-color);
 }
 
@@ -190,8 +200,8 @@ header.lightmode .nav-links a {
 
 .hero-text {
     color: #999;
-    font-size: 1.1rem;
-    margin-bottom: 2.5rem;
+    font-size: var(--font-size-p);
+    margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
     max-width: 600px;
 }
 
@@ -313,8 +323,8 @@ header.lightmode .nav-links a {
 }
 
 .portfolio-section h1 {
-    font-size: 3rem; /* Gleiche Größe wie main section */
-    margin-bottom: 12px; /* Reduzierter Abstand */
+    font-size: var(--font-size-h2);
+    margin-bottom: clamp(0.5rem, 2vw, 12px);
     font-weight: 700;
     color: #000;
 }
@@ -330,12 +340,12 @@ header.lightmode .nav-links a {
 .filter-btn {
     background: none;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 0.75rem 2rem;
     border-radius: 50px;
     color: #000;
     cursor: pointer;
-    font-size: 1rem;
     transition: all 0.3s ease;
+    padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(1rem, 3vw, 2rem);
+    font-size: var(--font-size-button);
 }
 
 .filter-btn:hover {
@@ -346,13 +356,15 @@ header.lightmode .nav-links a {
     background-color: var(--primary-color);
     color: #000;
     border-color: var(--primary-color);
-}.interaction-hint {
+}
+
+.interaction-hint {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.4rem;
     color: var(--text-color-light);
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
     opacity: 0.8;
 }
 
@@ -486,7 +498,7 @@ header.lightmode .nav-links a {
 }
 
 .hover-text {
-    font-size: 1rem;
+    font-size: var(--font-size-button);
     font-weight: 500;
     white-space: nowrap;
 }
@@ -509,7 +521,8 @@ header.lightmode .nav-links a {
 /* Filter Buttons Styling */
 .portfolio-filter {
     display: flex;
-    gap: 1rem;
+    gap: clamp(0.5rem, 2vw, 1rem);
+    margin-bottom: clamp(1rem, 3vw, 24px);
     margin-bottom: 2rem;
     justify-content: center;
 }
@@ -602,12 +615,30 @@ header.lightmode .nav-links a {
     overflow-y: hidden;
 }
 
+/* About Section Anpassungen */
+.about-section h1 {
+    font-size: var(--font-size-h1);
+}
+
+.about-section h2 {
+    font-size: var(--font-size-h2);
+    margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.about-section h3 {
+    font-size: var(--font-size-h3);
+    margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+.about-section p {
+    font-size: var(--font-size-p);
+}
+
 /* Left Column - Title and Image */
 .about-left-column {
     width: 360px;
     flex-shrink: 0;
     position: sticky;
-    top: calc(var(--header-height) + 2rem);
     height: fit-content;
     padding: 2rem;
 }
@@ -630,7 +661,7 @@ header.lightmode .nav-links a {
 
 .headline-section h1 {
     position: relative;
-    font-size: 3.4rem;
+    font-size: var(--font-size-h1);
     margin-top: -2.5rem;
     white-space: nowrap;
     z-index: 1;
@@ -692,15 +723,19 @@ header.lightmode .nav-links a {
     transform: translateY(-5px);
 }
 
+.skill-card h3 {
+    font-size: var(--font-size-h3);
+}
+
 .skill-icon {
-    width: 48px;
-    height: 48px;
+    width: clamp(32px, 6vw, 48px);
+    height: clamp(32px, 6vw, 48px);
     margin-bottom: 1rem;
 }
 
 .skill-icon svg {
-    width: 48px;
-    height: 48px;
+    width: 100%;
+    height: 100%;
     transition: transform 0.4s ease;
 }
 
@@ -717,21 +752,8 @@ header.lightmode .nav-links a {
     stroke-dashoffset: -5; /* Reduziert von -20 auf -10 */
 }
 
-h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: var(--primary-color);
-}
-
-h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-p {
-    line-height: 1.6;
-    color: var(--text-color);
-    opacity: 0.9;
+.skill-card p {
+    font-size: var(--font-size-p);
 }
 
 /* Animation classes */
