@@ -11,10 +11,16 @@
 </head>
 <body>
     <header>
+        <!-- In der nav, direkt nach dem logo div und vor nav-links -->
         <nav>
             <div class="logo" style="cursor: pointer;">
                 <img src="./assets/mfadljevic-logo-white.png" alt="logo manuelfadljevic" id="header-logo">
             </div>
+            <button class="hamburger-menu" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="nav-links">
                 <a href="#about" data-i18n="nav.about">About me</a>
                 <a href="#portfolio" class="portfolio-btn" data-i18n="nav.portfolio">Portfolio</a>
@@ -131,12 +137,12 @@
             <!-- Portfolio Content bleibt strukturell gleich, nur Text-Elemente bekommen data-i18n -->
             <div class="portfolio-content webdesign active">
 
-
                 <p class="interaction-hint">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hint-icon">
                         <path d="M9 18l6-6-6-6"/>
                     </svg>
-                    <span data-i18n="portfolio.hint">Click or swipe to discover more projects</span>
+                    <span class="hint-desktop" data-i18n="portfolio.hint.desktop">Click the projects on the left or right to navigate</span>
+                    <span class="hint-mobile" data-i18n="portfolio.hint.mobile">Swipe to discover more projects</span>
                 </p>
                 <div class="carousel-container">
                     <div class="project-hover-box">

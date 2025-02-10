@@ -1,3 +1,44 @@
+// Am Anfang der main.js nach den existierenden Funktionen hinzufügen
+
+function initMobileMenu() {
+    const hamburger = document.querySelector('.hamburger-menu');
+    const navLinks = document.querySelector('.nav-links');
+    const navLinksA = document.querySelectorAll('.nav-links a');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Schließe das Menü wenn ein Link geklickt wird
+    navLinksA.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+}
+
+// Füge den Aufruf zur DOMContentLoaded Event Listener hinzu
+document.addEventListener('DOMContentLoaded', function() {
+    calculateAndSetHeight();
+    initMobileMenu();
+    
+    // Bestehender TypeWriter Code...
+    const typeWriter = new TypeWriter(
+        document.querySelector('.typing-text'),
+        [
+            'Webdeveloper.',
+            'UI/UX Designer.',
+            'Fullstack Developer.',
+            'Graphic Designer.'
+        ],
+        3000
+    );
+});
+
 function calculateAndSetHeight() {
     // Header-Höhe ermitteln
     const headerHeight = document.querySelector('header').offsetHeight;

@@ -6,8 +6,8 @@
     --font-display: 'Playfair Display', serif;
 
     /* Neue Typografie-Variablen mit clamp() */
-    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
-    --font-size-h2: clamp(1.8rem, 3.5vw, 2.5rem);
+    --font-size-h1: clamp(2.3rem, 5vw, 4rem);
+    --font-size-h2: clamp(1.7rem, 3.5vw, 2.5rem);
     --font-size-h3: clamp(1.2rem, 2.5vw, 1.5rem);
     --font-size-p: clamp(0.9rem, 1.8vw, 1.1rem);
     --font-size-button: clamp(0.8rem, 1.6vw, 1rem);
@@ -35,13 +35,13 @@ body {
 }
 
 main {
-    position: relative;
+    position: sticky;
 }
 
 /* Header-Styles anpassen */
 header {
     padding: 2rem 5%;
-    position: sticky;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
@@ -76,6 +76,29 @@ nav {
     text-decoration: none;
     font-weight: 500;
     font-size: var(--font-size-button);
+}
+
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1002;
+}
+
+.hamburger-menu span {
+    width: 30px;
+    height: 3px;
+    background: var(--text-color);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
 }
 
 .portfolio-btn {
@@ -129,11 +152,6 @@ nav {
 /* HEADER LIGHT STYLES */
 header.lightmode{
     background-color: var(--text-color);
-}
-
-header.lightmode .language-toggle,
-header.lightmode .nav-links a {
-    color: var(--background-color);
 }
 
 /* Sections-Padding anpassen wegen fixed Header */
@@ -356,6 +374,10 @@ header.lightmode .nav-links a {
     background-color: var(--primary-color);
     color: #000;
     border-color: var(--primary-color);
+}
+
+.hint-desktop, .hint-mobile {
+    display: none;
 }
 
 .interaction-hint {
@@ -868,8 +890,90 @@ header.lightmode .nav-links a {
 }
 
 @media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: var(--background-color);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.3s ease-in-out;
+        z-index: 1001;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    /* Anpassungen für das aktive Hamburger-Icon */
+    .hamburger-menu.active span:first-child {
+        transform: rotate(45deg);
+    }
+
+    .hamburger-menu.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger-menu.active span:last-child {
+        transform: translateY(3px) rotate(-45deg);
+    }
+
+    /* Anpassungen für die Navigation Links */
+    .nav-links a {
+        margin: 1rem 0;
+        font-size: 1.5rem;
+    }
+
+    .nav-links .portfolio-btn {
+        margin-top: 1rem;
+    }
+
+    .language-toggle {
+        margin-top: 2rem;
+        margin-left: 0;
+    }
+
+    /* Header Anpassungen für Mobile */
+    header.lightmode .hamburger-menu span {
+        background: var(--background-color);
+    }
+
+    header.lightmode .hamburger-menu.active span{
+        background: var(--text-color);
+    }
+
     .hero{
         flex-direction: column;
+    }
+
+    .hero .hero-content{
+        padding: 2rem 0;
+    }
+
+    .hero .hero-content h2{
+        font-size: calc(var(--font-size-h2) * 0.65);
+    }
+
+    .hero .hero-content .btn{
+        padding: 0.8rem 1.4rem;
+        font-size: var(--font-size-button);
+    }
+
+    .hero .hero-image{
+        width: 100%;
+    }
+
+    .hero .hero-image img{
+        bottom: inherit;
+        top: 0;
+        max-width: calc(100% + 2rem);
     }
 
     .grid-sizer,
@@ -896,9 +1000,36 @@ header.lightmode .nav-links a {
         width: 150px;
     }
 
+    .hint-mobile {
+        display: inline;
+    }
+
+    .imac-frame {
+        width: 90vw;
+        top: 7%;
+    }
+    
+    .project-slides {
+        width: 76.5vw; /* 85% der iMac-Breite */
+        height: 43.03vw; /* Proportional angepasst */
+        top: calc(7% + 6.4vw);
+    }
+
     /* Responsive Anpassungen für Figma Frames */
     .portfolio-content.uiux .grid-sizer,
     .portfolio-content.uiux .grid-item {
         width: 98%;
+    }
+}
+
+@media (min-width: 769px) {
+
+    header.lightmode .language-toggle,
+    header.lightmode .nav-links a {
+        color: var(--background-color);
+    }
+    
+    .hint-desktop {
+        display: inline;
     }
 }
