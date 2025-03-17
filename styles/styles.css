@@ -1,0 +1,957 @@
+:root {
+    --menu-bg-color: rgba(255, 255, 255, 0.1);
+    --menu-backdrop-blur: 15px;
+    --dark-color: rgba(0, 0, 0, 0.2);
+    --menu-active-bg: rgba(255, 255, 255, 0.2);
+    --menu-hover-bg: rgba(255, 255, 255, 0.15);
+    --menu-icon-color: rgba(255, 255, 255, 0.8);
+    --white: rgba(255, 255, 255, 1);
+}
+
+/* Scrollbar Styling für Webkit-Browser (Chrome, Safari, neuere Edge-Versionen) */
+::-webkit-scrollbar {
+    width: 6px; /* Schmalere Scrollbar für mobile Geräte */
+    background-color: transparent;
+}
+  
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: var(--menu-hover-bg);
+    border-radius: 50px;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--menu-active-bg);
+}
+  
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: var(--menu-hover-bg) transparent;
+}
+  
+html {
+    scroll-behavior: smooth;
+}
+  
+body {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    background-image: url(../assets/background-image.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow: hidden;
+    -ms-overflow-style: none;
+}
+  
+.parent-layout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    gap: 2rem;
+}
+  
+/* Seitenmenü Styling */
+.side-menu {
+    position: relative;
+    width: 80px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.26);
+    border-radius: 50px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.2px);
+    -webkit-backdrop-filter: blur(7.2px);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+}
+  
+.side-menu ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+}
+  
+.side-menu .menu-item {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.side-menu .menu-item:hover {
+    background-color: var(--menu-hover-bg);
+}
+  
+.side-menu .menu-item.active {
+    background-color: var(--menu-active-bg);
+}
+  
+.side-menu .menu-item a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: var(--menu-icon-color);
+    font-size: 24px;
+    transition: all 0.3s ease;
+}
+  
+.side-menu .menu-item:hover a {
+    color: var(--menu-icon-hover-color);
+}
+  
+.side-menu .menu-item .tooltip {
+    position: absolute;
+    left: 80px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+  
+.side-menu .menu-item:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+  
+/*******************/
+/* Content-Bereich */
+/*******************/
+.dark-glass {
+    background-color: var(--dark-color);
+    backdrop-filter: blur(7.2px);
+    -webkit-backdrop-filter: blur(7.2px);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    padding: 1.2rem;
+}
+
+.dark-glass .box-header {
+    margin-bottom: 1rem;
+}
+
+.content {
+    position: relative;
+    height: 100%;
+    flex: 1;
+    overflow-y: hidden;
+    padding: 0 2rem 2rem 2rem;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background: rgba(255, 255, 255, 0.26);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.2px);
+    -webkit-backdrop-filter: blur(7.2px);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+}
+
+/* Versteckt alle Inhalte, wenn die Content-Box die Klasse "portfolio" hat */
+.content.portfolio .title-box,
+.content.portfolio .more-information-box {
+    display: none;
+}
+
+.content .flex-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.content .title-box {
+    display: flex;
+    padding: 1.2rem 2rem 0 2rem;
+    flex-direction: row;
+    border-radius: 0 0 16px 16px;
+    border-top: none;
+    flex: 0 0 auto;
+    max-height: 40%;
+    height: 40%;
+}
+
+.content .title-box .text-left {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 15%;
+}
+
+.content .title-box .text-left h1 {
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.content .title-box .text-left h2, p {
+    font-weight: lighter;
+}
+
+.content .title-box .text-left .profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.content .title-box .text-left .language-selector {
+    padding: .75rem;
+    background-color: var(--dark-color);
+    width: fit-content;
+    height: fit-content;
+    border-radius: 50px;
+}
+
+.content .title-box .profile-image {
+    flex: 1;
+    overflow: hidden;
+}
+
+.content .title-box .profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.content .more-information-box {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.content .more-information-box .techandtools {
+    flex: 1;
+}
+
+.content .more-information-box .experience {
+    flex: .9;
+}
+
+.content .more-information-box .projects-box {
+    flex: 1.1;
+}
+
+.more-information-box .tech-box .box-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.more-information-box .tech-box .tech-icons,
+.more-information-box .tools-box .tool-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: left;
+    max-width: 100%;
+}
+
+.more-information-box .tech-box .tech-icons .tech-icon,
+.more-information-box .tools-box .tool-icons .tool-icon {
+    position: relative;
+    flex: 1;
+    min-width: calc(16.666% - 1rem);
+    display: grid;
+    place-items: center;
+}
+
+.tech-icon::after,
+.tool-icon::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.tech-icon:hover::after,
+.tool-icon:hover::after {
+    opacity: 1;
+    visibility: visible;
+    top: -35px;
+}
+
+/* Pfeil unter dem Tooltip */
+.tech-icon::before,
+.tool-icon::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.tech-icon:hover::before,
+.tool-icon:hover::before {
+    opacity: 1;
+    visibility: visible;
+    top: -15px;
+}
+
+.more-information-box .tech-box .tech-icons img {
+    width: 90%;
+    max-height: 100%;
+}
+
+.more-information-box .tools-box .tool-icons img {
+    height: 95%;
+    max-width: 95%;
+}
+
+/* PROJECT BOX */
+/* Projects Box Styling */
+.projects-box {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.projects-box .box-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-shrink: 0;
+}
+
+.projects-box .box-header h3 {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.projects-box .view-more {
+    color: var(--white);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.projects-box .view-more:hover {
+    opacity: 1;
+}
+
+.projects-box .box-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.projects-box .project-cards {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    flex: 1;
+}
+
+.projects-box .project-card {
+    position: relative;
+    flex: 1;
+    background-color: var(--dark-color);
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border-radius: 6px;
+}
+
+.projects-box .project-card img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    transform: scale(1.15);
+}
+
+.projects-box .project-card .dark-background {
+    z-index: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0,0,0);
+    background: -moz-linear-gradient(0deg, rgba(0,0,0,0.8491990546218487) 0%, rgba(0,0,0,0) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(0,0,0,0.8491990546218487) 0%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(0deg, rgba(0,0,0,0.8491990546218487) 0%, rgba(0,0,0,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1);
+}
+
+.projects-box .project-card .project-info {
+    position: relative;
+    z-index: 2;
+    color: var(--white);
+    padding: 1rem;
+    width: 100%;
+    transform: translateY(42px);
+    transition: transform 0.3s ease;
+}
+
+.projects-box .project-card:hover .project-info {
+    transform: translateY(0);
+}
+
+.projects-box .project-card:hover img {
+    transform: scale(1.05);
+}
+
+.projects-box .project-info {
+    flex: 1;
+}
+
+.projects-box .project-info h4 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+    position: relative;
+    z-index: 3;
+}
+
+.projects-box .project-info p {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    font-weight: 300;
+    position: relative;
+    z-index: 3;
+    margin-bottom: 0.5rem;
+}
+
+.projects-box .project-info span {
+    display: flex;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--white);
+    opacity: 0.9;
+    position: relative;
+    z-index: 3;
+    opacity: 0;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 0.25rem .5rem;
+    border-radius: 6px;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.projects-box .project-info span::after {
+    content: "→";
+    margin-left: 5px;
+    font-size: 1.1em;
+}
+
+.projects-box .project-card:hover .project-info span {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.experience .experience-entries,
+.education .education-entries {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.experience .experience-entries .experience-entry,
+.education .education-entries .education-entry {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    background-color: var(--menu-active-bg);
+    border-radius: 6px;
+    padding: 0.5rem;
+}
+
+.experience .experience-entries .experience-entry p,
+.education .education-entries .education-entry p {
+    font-size: 0.75rem;
+}
+
+/* Portfolio Container */
+.portfolio-container {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 1.5rem;
+}
+
+/* Responsive Design für verschiedene Bildschirmgrößen */
+@media (min-width: 1400px) {
+    .content .title-box .text-left h1 {
+        font-size: 3rem;
+    }
+    
+    .content .title-box .text-left h2 {
+        font-size: 1.8rem;
+    }
+    
+    .projects-box .box-header h3 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    .parent-layout {
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+    
+    .content {
+        padding: 0 1.5rem 1.5rem 1.5rem;
+        gap: 1.5rem;
+    }
+    
+    .content .title-box {
+        padding: 1rem 1.5rem 0 1.5rem;
+    }
+    
+    .content .title-box .text-left h1 {
+        font-size: 2.2rem;
+    }
+    
+    .content .title-box .text-left h2 {
+        font-size: 1.4rem;
+    }
+    
+    .content .more-information-box {
+        gap: 1.5rem;
+    }
+    
+    .projects-box .box-header h3 {
+        font-size: 1.8rem;
+    }
+    
+    .dark-glass {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .parent-layout {
+        padding: 1.2rem;
+        gap: 1.2rem;
+    }
+    
+    .content {
+        padding: 0 1.2rem 1.2rem 1.2rem;
+        gap: 1.2rem;
+    }
+    
+    .content .title-box {
+        padding: 0.8rem 1.2rem 0 1.2rem;
+    }
+    
+    .content .title-box .text-left h1 {
+        font-size: 2rem;
+    }
+    
+    .content .title-box .text-left h2 {
+        font-size: 1.2rem;
+    }
+    
+    .content .more-information-box {
+        gap: 1.2rem;
+    }
+    
+    .more-information-box .tech-box .tech-icons .tech-icon,
+    .more-information-box .tools-box .tool-icons .tool-icon {
+        flex: 0 0 calc(33.33% - 1rem); /* Set the size to 1/3 of the parent */
+    }
+
+    .projects-box .box-body {
+        overflow-y: auto;
+    }
+
+    .projects-box .box-body .project-cards {
+        flex-direction: column;
+        flex: 0 0 auto;
+        height: auto;
+    }
+    
+    .projects-box .box-header h3 {
+        font-size: 1.6rem;
+    }
+
+    .projects-box .project-card {
+        flex: 0 0 150px;
+        height: 150px;
+    }
+    
+    .dark-glass {
+        padding: 0.8rem;
+    }
+    
+    .dark-glass .box-header {
+        margin-bottom: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Ändere das Layout für Mobilgeräte */
+    .parent-layout {
+        flex-direction: column-reverse; /* Menü nach unten verschieben */
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .side-menu {
+        height: fit-content;
+        width: fit-content;
+        padding: 0.75rem 1.25rem;
+        margin-top: 0.5rem;
+    }
+    
+    .side-menu ul {
+        flex-direction: row; /* Horizontales Menü */
+        justify-content: space-around;
+        gap: 5px;
+    }
+    
+    .side-menu .menu-item {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .side-menu .menu-item a img {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .side-menu .menu-item .tooltip {
+        left: 50%;
+        top: -40px;
+        transform: translateX(-50%);
+    }
+    
+    .content {
+        padding: 0 1rem 1rem 1rem;
+        gap: 1rem;
+        height: calc(100% - 70px); /* Platz für das Menü unten lassen */
+        width: 100%;
+        overflow-y: auto; /* Ermöglicht Scrollen des gesamten Inhalts */
+    }
+    
+    .content .title-box {
+        flex-direction: column;
+        padding: 0.8rem 1rem 0 1rem;
+        max-height: none;
+        height: auto;
+    }
+    
+    .content .title-box .text-left {
+        order: 2;
+        gap: 1rem;
+    }
+    
+    .content .title-box .profile-image {
+        display: none;
+    }
+    
+    .content .title-box .text-left h1 {
+        font-size: 1.8rem;
+    }
+    
+    .content .title-box .text-left h2 {
+        font-size: 1.1rem;
+    }
+    
+    .content .title-box .text-left .language-selector {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .content .more-information-box {
+        flex-direction: column;
+        gap: 1rem;
+        overflow-y: visible; /* Kein Scrollen innerhalb der Box */
+    }
+
+    .tech-box .box-body {
+        flex-direction: row !important;
+        gap: 0;
+    }
+    
+    .more-information-box .tech-box .tech-icons,
+    .more-information-box .tools-box .tool-icons {
+        justify-content: center;
+    }
+    
+    .more-information-box .tech-box .tech-icons .tech-icon,
+    .more-information-box .tools-box .tool-icons .tool-icon {
+        flex: 0 0 calc((100% - .8rem) / 12);
+    }
+    
+    /* Projects Box für Mobile optimieren - ohne Scrollbar */
+    .projects-box {
+        overflow: visible;
+        height: auto;
+    }
+
+    .projects-box .box-body {
+        overflow-y: visible;
+        height: auto;
+    }
+
+    .projects-box .project-cards {
+        flex-direction: column;
+        gap: 0.8rem;
+        flex: 0 0 auto;
+        height: auto;
+    }
+    
+    .projects-box .project-card {
+        height: 150px;
+        flex: 0 0 150px;
+    }
+    
+    .projects-box .box-header h3 {
+        font-size: 1.4rem;
+    }
+    
+    .projects-box .box-header {
+        margin-bottom: 1rem;
+    }
+    
+    .experience .experience-entries .experience-entry,
+    .education .education-entries .education-entry {
+        padding: 0.4rem;
+    }
+    
+    /* Portfolio-Container an mobile Menübreite anpassen */
+    .portfolio-container {
+        padding: 1rem;
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .parent-layout {
+        padding: 0.8rem;
+        gap: 0.8rem;
+    }
+    
+    .content {
+        padding: 0 0.8rem 0.8rem 0.8rem;
+        gap: 0.8rem;
+        border-radius: 12px;
+    }
+    
+    .side-menu {
+        border-radius: 20px;
+        padding: 8px 0;
+    }
+    
+    .side-menu .menu-item {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .side-menu .menu-item a img {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .content .title-box {
+        padding: 0.6rem 0.8rem 0 0.8rem;
+    }
+    
+    .content .title-box .text-left h1 {
+        font-size: 1.6rem;
+    }
+    
+    .content .title-box .text-left h2 {
+        font-size: 1rem;
+    }
+    
+    .content .title-box .profile-image {
+        max-height: 180px;
+    }
+    
+    .more-information-box .tech-box .tech-icons .tech-icon,
+    .more-information-box .tools-box .tool-icons .tool-icon {
+        min-width: calc(33.333% - 1rem);
+    }
+    
+    .dark-glass {
+        padding: 0.7rem;
+        border-radius: 12px;
+    }
+    
+    .dark-glass .box-header {
+        margin-bottom: 0.7rem;
+    }
+    
+    .projects-box .box-header h3 {
+        font-size: 1.2rem;
+    }
+    
+    .projects-box .project-card {
+        height: 130px;
+        flex: 0 0 130px;
+    }
+    
+    .projects-box .project-info h4 {
+        font-size: 0.9rem;
+    }
+    
+    .projects-box .project-info p {
+        font-size: 0.7rem;
+    }
+    
+    /* Portfolio-Container an mobile Menübreite anpassen */
+    .portfolio-container {
+        padding: 0.8rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .parent-layout {
+        padding: 0.6rem;
+        gap: 0.6rem;
+    }
+    
+    .content {
+        padding: 0 0.6rem 0.6rem 0.6rem;
+        gap: 0.6rem;
+    }
+    
+    .side-menu {
+        padding: 6px 0;
+    }
+    
+    .side-menu .menu-item {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .side-menu .menu-item a img {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .content .title-box {
+        padding: 0.5rem 0.6rem 0 0.6rem;
+    }
+    
+    .content .title-box .text-left h1 {
+        font-size: 1.4rem;
+    }
+    
+    .content .title-box .text-left h2 {
+        font-size: 0.9rem;
+    }
+    
+    .content .title-box .text-left .bio {
+        font-size: 0.8rem;
+    }
+    
+    .content .title-box .profile-image {
+        max-height: 150px;
+    }
+    
+    .more-information-box .tech-box .tech-icons .tech-icon,
+    .more-information-box .tools-box .tool-icons .tool-icon {
+        min-width: calc(50% - 1rem);
+    }
+    
+    .dark-glass {
+        padding: 0.6rem;
+    }
+    
+    .dark-glass .box-header {
+        margin-bottom: 0.6rem;
+    }
+    
+    .projects-box .box-header h3 {
+        font-size: 1.1rem;
+    }
+    
+    .projects-box .project-card {
+        height: 120px;
+        flex: 0 0 120px;
+    }
+    
+    /* Portfolio-Container an mobile Menübreite anpassen */
+    .portfolio-container {
+        padding: 0.6rem;
+    }
+}
+
+/* Spezielle Anpassungen für sehr kleine Bildschirme */
+@media (max-height: 600px) and (max-width: 768px) {
+    .content .title-box .profile-image {
+        max-height: 120px;
+    }
+    
+    .projects-box .project-card {
+        height: 110px;
+        flex: 0 0 110px;
+    }
+    
+    .side-menu {
+        padding: 5px 0;
+    }
+    
+    .side-menu .menu-item {
+        width: 38px;
+        height: 38px;
+    }
+}

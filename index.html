@@ -3,246 +3,363 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="meta.title">Manuel Fadljevic - Web Developer</title>
-    <link rel="icon" type="image/png" href="./assets/ico/favicon.ico"/>
-    <link rel="icon" type="image/png" href="./assets/ico/favicon-portfolio.png"/>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Manuel Fadljevic - Portfolio</title>
+    <!-- CSS Dateien -->
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/portfolio.css">
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Font Awesome (optional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Masonry für das automatische Layout -->
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <!-- imagesLoaded für bessere Masonry-Performance -->
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
 </head>
 <body>
-    <header>
-        <!-- In der nav, direkt nach dem logo div und vor nav-links -->
-        <nav>
-            <div class="logo" style="cursor: pointer;">
-                <img src="./assets/mfadljevic-logo-white.png" alt="logo manuelfadljevic" id="header-logo">
-            </div>
-            <button class="hamburger-menu" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <div class="nav-links">
-                <a href="#about" data-i18n="nav.about">About me</a>
-                <a href="#portfolio" class="portfolio-btn" data-i18n="nav.portfolio">Portfolio</a>
-                <button class="language-toggle">
-                    <span class="current-lang">EN</span>
-                    <span class="separator">/</span>
-                    <span class="other-lang">DE</span>
-                </button>
-            </div>
+    <div class="parent-layout">
+        <nav class="side-menu">
+            <ul>
+                <li class="menu-item active">
+                    <a href="#profile">
+                        <img src="./assets/menu-icons/person.fill.svg" alt="person-icon">
+                        <span class="tooltip">Profil</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#portfolio">
+                        <img src="./assets/menu-icons/folder.fill.svg" alt="person-icon">
+                        <span class="tooltip">Portfolio</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#linkedin">
+                        <img src="./assets/menu-icons/linkedin.svg" alt="linkedin-icon">
+                        <span class="tooltip">LinkedIn</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#github">
+                        <img src="./assets/menu-icons/github.svg" alt="github-icon">
+                        <span class="tooltip">GitHub</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#instagram">
+                        <img src="./assets/menu-icons/instagram.svg" alt="instagram-icon">
+                        <span class="tooltip">Instagram</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#cv">
+                        <img src="./assets/menu-icons/arrow.down.doc.fill.svg" alt="folder-icon">
+                        <span class="tooltip">Lebenslauf</span>
+                    </a>
+                </li>
+            </ul>
         </nav>
-    </header>
-
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1 data-i18n="hero.greeting">Hi, I'm Manuel 👋</h1>
-                <h2><span data-i18n="hero.occupation">and I'm a</span> <span class="typing-text highlight"></span></h2>
-                
-                <p class="hero-text" data-i18n="hero.description">
-                    Bridging design and development, I offer a unique blend of creative and 
-                    technical skills. My expertise in both graphic design and web development 
-                    allows me to create visually stunning and highly functional digital 
-                    experiences.
-                </p>
-
-                <div class="cta-buttons">
-                    <a href="#portfolio" class="btn primary" data-i18n="hero.viewPortfolio">View Portfolio</a>
-                    <a href="#about" class="btn secondary" data-i18n="hero.aboutMe">about me</a>
-                </div>
-            </div>
-
-            <div class="hero-image">
-                <img src="assets/profilbild.png" alt="Manuel Fadljevic">
-            </div>
-        </section>
-
-        <section class="about-section hidden-section">
-            <!-- Left Column -->
-            <div class="about-left-column">
-                <div class="headline-section">
-                    <img src="./assets/mfadljevic-image-02.png" alt="Manuel Fadljevic">
-                    <h1 data-i18n="about.title">ABOUT ME</h1>
-                </div>
-            </div>
-        
-            <!-- Right Column -->
-            <div class="about-right-column">
-                <div class="about-content">
-                    <div class="education-experience">
-                        <h2 data-i18n="about.backgroundTitle">Background & Expertise</h2>
-                        <p data-i18n="about.backgroundText">With roots in media technology and design, my journey began at HTBLA Leonding and flourished at the University of Applied Sciences Upper Austria. Since 2015, I've been immersed in the dynamic world of web development and design, constantly evolving with the industry.</p>
+        <!-- Hauptinhalt -->
+        <div class="content">
+            <!-- Titel-Bereich mit Profilbild und Beschreibung -->
+            <div class="title-box dark-glass">
+                <div class="text-left">
+                    <div class="language-selector">
+                        <span>EN</span>
                     </div>
-        
-                    <div class="skills-container">
-                        <h2 data-i18n="about.whatIDo">What I Do</h2>
-                        <div class="skills-grid">
-                            <div class="skill-card">
-                                <div class="skill-icon">
-                                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M24 4C12.954 4 4 12.954 4 24C4 35.046 12.954 44 24 44C35.046 44 44 35.046 44 24C44 12.954 35.046 4 24 4Z" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M24 16C19.582 16 16 19.582 16 24C16 28.418 19.582 32 24 32" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M32 24C32 19.582 28.418 16 24 16" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M24 28C26.2091 28 28 26.2091 28 24C28 21.7909 26.2091 20 24 20" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </div>
-                                <h3 data-i18n="about.design.title">Design</h3>
-                                <p data-i18n="about.design.description">Creating visually stunning designs using the Adobe Creative Suite and Figma, transforming concepts into compelling visual experiences.</p>
-                            </div>
-
-                            <div class="skill-card">
-                                <div class="skill-icon">
-                                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M18 32L10 24L18 16" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M30 16L38 24L30 32" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M26 12L22 36" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </div>
-                                <h3 data-i18n="about.development.title">Development</h3>
-                                <p data-i18n="about.development.description">Building responsive websites with HTML, CSS, JavaScript, and PHP, enhanced by WordPress and backed by MySQL databases.</p>
-                            </div>
-
-                            <div class="skill-card">
-                                <div class="skill-icon">
-                                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M24 44C35.046 44 44 35.046 44 24C44 12.954 35.046 4 24 4C12.954 4 4 12.954 4 24C4 35.046 12.954 44 24 44Z" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M16 28C18.2091 28 20 26.2091 20 24C20 21.7909 18.2091 20 16 20C13.7909 20 12 21.7909 12 24C12 26.2091 13.7909 28 16 28Z" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M32 28C34.2091 28 36 26.2091 36 24C36 21.7909 34.2091 20 32 20C29.7909 20 28 21.7909 28 24C28 26.2091 29.7909 28 32 28Z" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M16 32C16 32 19 36 24 36C29 36 32 32 32 32" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </div>
-                                <h3 data-i18n="about.uiux.title">UI/UX Design</h3>
-                                <p data-i18n="about.uiux.description">Crafting intuitive user interfaces and experiences that blend aesthetics with functionality.</p>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <div class="personal-approach">
-                        <h2 data-i18n="about.approachTitle">My Approach</h2>
-                        <p data-i18n="about.approachText">Just as in tennis, my approach to projects is driven by precision and continuous improvement. I thrive on new challenges and believe in creating solutions that not only meet but exceed expectations. Working collaboratively, I bring both technical expertise and creative vision to every project.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="portfolio-section hidden-section">
-            <h1 data-i18n="portfolio.title">PORTFOLIO</h1>
-            
-            <div class="portfolio-filter">
-                <button class="filter-btn active" data-filter="webdesign" data-i18n="portfolio.webdesign">WEBDESIGN</button>
-                <button class="filter-btn" data-filter="graphic" data-i18n="portfolio.graphic">GRAPHIC DESIGN</button>
-                <button class="filter-btn" data-filter="uiux" data-i18n="portfolio.uiux">UI/UX</button>
-            </div>
-
-            <!-- Portfolio Content bleibt strukturell gleich, nur Text-Elemente bekommen data-i18n -->
-            <div class="portfolio-content webdesign active">
-
-                <p class="interaction-hint">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hint-icon">
-                        <path d="M9 18l6-6-6-6"/>
-                    </svg>
-                    <span class="hint-desktop" data-i18n="portfolio.hint.desktop">Click the projects on the left or right to navigate</span>
-                    <span class="hint-mobile" data-i18n="portfolio.hint.mobile">Swipe to discover more projects</span>
-                </p>
-                <div class="carousel-container">
-                    <div class="project-hover-box">
-                        <span class="hover-text" data-i18n="portfolio.showProject">SHOW PROJECT</span>
-                        <div class="hover-circle">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <!-- iMac Frame -->
-                    <img src="assets/portfolio/iMac Transparent.png" alt="iMac Frame" class="imac-frame">
                     
-                    <!-- Project Slides -->
-                    <div class="project-slides">
-                        <div class="project-slide prev" data-index="0" data-url="https://nmt-enzendorfer.com/">
-                            <img src="assets/portfolio/nmt-website.jpg" alt="Project 1">
+                    <div class="profile-info">
+                        <h1>Manuel Fadljevic</h1>
+                        <h2>Media Technologist</h2>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Vienna, Austria</p>
+                        <p class="bio">I'm a 24 year old Media-Technologist. I have been programming and doing creative media for more than 8 years. I create professional websites.</p>
+                    </div>
+                </div>
+                <div class="profile-image">
+                    <img src="./assets/Profilbild komprimiert.png" alt="Manuel Fadljevic">
+                </div>
+            </div>
+            
+            <!-- Weitere Informationen (Profil-Ansicht) -->
+            <div class="more-information-box">
+                <div class="flex-vertical techandtools">
+                    <!-- Technologien -->
+                    <div class="tech-box dark-glass">
+                        <div class="box-header">
+                            <h3>Technologies</h3>
                         </div>
-                        <div class="project-slide current" data-index="1" data-url="https://www.yoga-touch.at/">
-                            <img src="assets/portfolio/yoga-touch-website.jpg" alt="Project 2">
+                        <div class="box-body">
+                            <!-- Technologie-Icons -->
+                            <div class="tech-icons">
+                                <div class="tech-icon" data-tooltip="Angular"><img src="./assets/icons/angular-icon.svg" alt="Angular"></div>
+                                <div class="tech-icon" data-tooltip="TypeScript"><img src="./assets/icons/typescript-icon.svg" alt="TypeScript"></div>
+                                <div class="tech-icon" data-tooltip="HTML5"><img src="./assets/icons/html-icon.svg" alt="HTML5"></div>
+                                <div class="tech-icon" data-tooltip="CSS3"><img src="./assets/icons/css-icon.svg" alt="CSS3"></div>
+                                <div class="tech-icon" data-tooltip="JavaScript"><img src="./assets/icons/javascript-icon.svg" alt="JavaScript"></div>
+                                <div class="tech-icon" data-tooltip="Python"><img src="./assets/icons/python-icon.svg" alt="Python"></div>
+                            </div>
+                            <div class="tech-icons">
+                                <div class="tech-icon" data-tooltip="C"><img src="./assets/icons/c-icon.svg" alt="C"></div>
+                                <div class="tech-icon" data-tooltip="React"><img src="./assets/icons/react-icon.svg" alt="React"></div>
+                                <div class="tech-icon" data-tooltip="MongoDB"><img src="./assets/icons/mongodb-icon.svg" alt="MongoDB"></div>
+                                <div class="tech-icon" data-tooltip="GitHub"><img src="./assets/icons/github-icon.svg" alt="GitHub"></div>
+                                <div class="tech-icon" data-tooltip="MySQL"><img src="./assets/icons/mysql-icon.svg" alt="MySQL"></div>
+                                <div class="tech-icon" data-tooltip="Java"><img src="./assets/icons/java-icon.svg" alt="Java"></div>
+                            </div>
                         </div>
-                        <div class="project-slide next" data-index="2" data-url="https://www.holza.at/">
-                            <img src="assets/portfolio/holza-website.jpg" alt="Project 3">
+                    </div>
+
+                    <!-- Tools -->
+                    <div class="tools-box dark-glass">
+                        <div class="box-header">
+                            <h3>Tools</h3>
                         </div>
-                        <div class="project-slide next" data-index="3" data-url="https://golden-signals.com/">
-                            <img src="assets/portfolio/gfs-website.jpg" alt="Project 4">
+                        <div class="box-body">
+                            <!-- Tool-Icons -->
+                            <div class="tool-icons">
+                                <div class="tool-icon" data-tooltip="Photoshop"><img src="./assets/icons/photoshop-icon.svg" alt="Photoshop"></div>
+                                <div class="tool-icon" data-tooltip="Figma"><img src="./assets/icons/figma-icon.svg" alt="Figma"></div>
+                                <div class="tool-icon" data-tooltip="VS Code"><img src="./assets/icons/vscode-icon.svg" alt="VS Code"></div>
+                                <div class="tool-icon" data-tooltip="Illustrator"><img src="./assets/icons/illustrator-icon.svg" alt="Illustrator"></div>
+                                <div class="tool-icon" data-tooltip="Premiere Pro"><img src="./assets/icons/primiere-icon.svg" alt="Premiere Pro"></div>
+                            </div>
                         </div>
-                        <div class="project-slide next" data-index="4" data-url="#">
-                            <img src="assets/portfolio/drone-website.jpg" alt="Project 5">
+                    </div>
+                </div>
+                
+                <!-- Projekte -->
+                <div class="projects-box dark-glass">
+                    <div class="box-header">
+                        <h3>Projects</h3>
+                        <a href="#more-projects" class="view-more">view more →</a>
+                    </div>
+                    <div class="box-body">
+                        <!-- Projekt-Karten -->
+                        <div class="project-cards">
+                            <div class="project-card">
+                                <img src="./assets/project-images/holza-website.jpg" alt="Holza Website">
+                                <div class="dark-background"></div>
+                                <div class="project-info">
+                                    <h4>Holza</h4>
+                                    <p>Website for a musician called Holza</p>
+                                    <span>View more </span>
+                                </div>
+                            </div>
+                            <div class="project-card">
+                                <img src="./assets/project-images/golden-website.jpg" alt="Golden Forex Signals">
+                                <div class="dark-background"></div>
+                                <div class="project-info">
+                                    <h4>GFS</h4>
+                                    <p>Website for a finance company</p>
+                                    <span>View more </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-cards">
+                            <div class="project-card">
+                                <img src="./assets/project-images/nmt-website.jpg" alt="Mental Training">
+                                <div class="dark-background"></div>
+                                <div class="project-info">
+                                    <h4>Coaching</h4>
+                                    <p>Website for a neuromental coach</p>
+                                    <span>View more </span>
+                                </div>
+                            </div>
+                            <div class="project-card">
+                                <img src="./assets/project-images/yoga-website.jpg" alt="Yoga Touch">
+                                <div class="dark-background"></div>
+                                <div class="project-info">
+                                    <h4>Yoga</h4>
+                                    <p>Website for a yoga instructor</p>
+                                    <span>View more </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex-vertical experience">
+                    <div class="experience-box dark-glass">
+                        <div class="box-header">
+                            <h3>Experience</h3>
+                        </div>
+                        <div class="box-body">
+                            <!-- Erfahrungs-Einträge -->
+                            <div class="experience-entries">
+                                <div class="experience-entry">
+                                    <div class="company-logo">
+                                        <img src="./assets/company-icons/gklampfer.svg" alt="Marketing Company">
+                                    </div>
+                                    <div class="experience-details">
+                                        <h4>Marketing</h4>
+                                        <p>Klampfer Elektroanlagen / Leonding</p>
+                                        <p class="date">April 2024 - Juli 2024</p>
+                                    </div>
+                                </div>
+                                <div class="experience-entry">
+                                    <div class="company-logo">
+                                        <img src="./assets/company-icons/LASK LINZ.svg" alt="Marketing Club">
+                                    </div>
+                                    <div class="experience-details">
+                                        <h4>Marketing</h4>
+                                        <p>LASK GmbH / Linz (Football Club)</p>
+                                        <p class="date">April 2024 - Juni 2024</p>
+                                    </div>
+                                </div>
+                                <div class="experience-entry">
+                                    <div class="company-logo">
+                                        <img src="./assets/company-icons/mtmedien.svg" alt="Media Company">
+                                    </div>
+                                    <div class="experience-details">
+                                        <h4>Media Assistant</h4>
+                                        <p>MT Medien / Wallern an der Trattnach</p>
+                                        <p class="date">Juni 2019 - Juli 2019 (Intern)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Ausbildung -->
+                    <div class="education dark-glass">
+                        <div class="box-header">
+                            <h3>Education</h3>
+                        </div>
+                        <div class="box-body">
+                            <!-- Ausbildungs-Einträge -->
+                            <div class="education-entries">
+                                <div class="education-entry">
+                                    <div class="institution-logo">
+                                        <img src="./assets/company-icons/fhooe.svg" alt="FH Logo">
+                                    </div>
+                                    <div class="education-details">
+                                        <h4>Bachelor of Science</h4>
+                                        <p>FH Technikum Wien / UX Design</p>
+                                        <p class="date">2019 - 2023</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Graphic Design Content -->
-            <div class="portfolio-content graphic">
-                <!-- Ersetzen Sie den bestehenden masonry-grid Container mit diesem: -->
-                <div class="masonry-grid">
-                    <!-- grid-sizer wird automatisch durch JS hinzugefügt -->
-                    <div class="grid-item">
-                        <img src="./assets/graphics/graphics_2.jpg" alt="Graphic Design 4" loading="lazy">
-                    </div>
-                    <div class="grid-item">
-                        <img src="./assets/graphics/graphics_3.png" alt="Graphic Design 5" loading="lazy">
-                    </div>
-                    <div class="grid-item">
-                        <img src="./assets/graphics/graphics_6.jpg" alt="Graphic Design 6" loading="lazy">
-                    </div>
-                    <div class="grid-item">
-                        <img src="./assets/graphics/graphics_7.jpg" alt="Graphic Design 7" loading="lazy">
-                    </div>
-                    <div class="grid-item">
-                        <img src="./assets/graphics/graphics_4.jpg" alt="Graphic Design 2" loading="lazy">
-                    </div>
-                    <div class="grid-item">
-                        <img src="./assets/graphics/graphics_5.jpg" alt="Graphic Design 3" loading="lazy">
-                    </div>
-                    <div class="grid-item">
-                        <img src="./assets/graphics/graphics_1.jpg" alt="Graphic Design 1" loading="lazy">
+            <!-- Portfolio-Bereich (wird nur angezeigt, wenn die content-Box die Klasse "portfolio" hat) -->
+            <div class="portfolio-container">
+                <div class="portfolio-header">
+                    <h1>Portfolio</h1>
+                    <div class="portfolio-filter">
+                        <button class="filter-btn active" data-filter="websites">Websites</button>
+                        <button class="filter-btn" data-filter="graphic-design">Grafikdesign</button>
+                        <button class="filter-btn" data-filter="uiux">UI/UX</button>
                     </div>
                 </div>
-            </div>
+                
+                <div class="portfolio-content">
+                    <!-- Websites Section -->
+                    <div class="portfolio-section websites active">
+                        <div class="grid-sizer"></div>
+                        <div class="portfolio-item" data-category="websites">
+                            <img src="./assets/project-images/holza-website.jpg" alt="Holza Website">
+                            <div class="portfolio-item-overlay">
+                                <div class="portfolio-item-info">
+                                    <h3>Holza</h3>
+                                    <p>Website für einen Musiker</p>
+                                    <span class="view-more">Mehr anzeigen →</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-item" data-category="websites">
+                            <img src="./assets/project-images/golden-website.jpg" alt="GFS Website">
+                            <div class="portfolio-item-overlay">
+                                <div class="portfolio-item-info">
+                                    <h3>GFS</h3>
+                                    <p>Website für ein Finanzunternehmen</p>
+                                    <span class="view-more">Mehr anzeigen →</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-item" data-category="websites">
+                            <img src="./assets/project-images/nmt-website.jpg" alt="Coaching Website">
+                            <div class="portfolio-item-overlay">
+                                <div class="portfolio-item-info">
+                                    <h3>Coaching</h3>
+                                    <p>Website für einen Neuromental-Coach</p>
+                                    <span class="view-more">Mehr anzeigen →</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-item" data-category="websites">
+                            <img src="./assets/project-images/yoga-website.jpg" alt="Yoga Website">
+                            <div class="portfolio-item-overlay">
+                                <div class="portfolio-item-info">
+                                    <h3>Yoga</h3>
+                                    <p>Website für eine Yoga-Lehrerin</p>
+                                    <span class="view-more">Mehr anzeigen →</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-            <!-- UI/UX Content -->
-            <div class="portfolio-content uiux">
-                <div class="masonry-grid">
-                    <div class="grid-item">
-                        <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/hGi5gADltF2OlN94xUsio0/Fadljevic-PetPal?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+                    <!-- Grafikdesign Section -->
+                    <div class="portfolio-section graphic-design">
+                        <div class="grid-sizer"></div>
+                        <div class="portfolio-item" data-category="graphic-design">
+                            <img src="./assets/graphics/graphics_2.jpg" alt="Grafikdesign Projekt 1">
+                        </div>
+                        <div class="portfolio-item" data-category="graphic-design">
+                            <img src="./assets/graphics/graphics_3.png" alt="Grafikdesign Projekt 2">
+                        </div>
+                        <div class="portfolio-item" data-category="graphic-design">
+                            <img src="./assets/graphics/graphics_6.jpg" alt="Grafikdesign Projekt 3">
+                        </div>
+                        <div class="portfolio-item" data-category="graphic-design">
+                            <img src="./assets/graphics/graphics_7.jpg" alt="Grafikdesign Projekt 3">
+                        </div>
+                        <div class="portfolio-item" data-category="graphic-design">
+                            <img src="./assets/graphics/graphics_4.jpg" alt="Grafikdesign Projekt 3">
+                        </div>
+                        <div class="portfolio-item" data-category="graphic-design">
+                            <img src="./assets/graphics/graphics_5.jpg" alt="Grafikdesign Projekt 3">
+                        </div>
+                        <div class="portfolio-item" data-category="graphic-design">
+                            <img src="./assets/graphics/graphics_1.jpg" alt="Grafikdesign Projekt 3">
+                        </div>
                     </div>
-                    <div class="grid-item">
-                        <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/x3UeyVBFqzQq5JDgUqEVGq/Carload?node-id=0-1&embed-host=share" allowfullscreen></iframe>
-                    </div>
-                    <div class="grid-item">
-                        <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/ujnu1sdjctO8IOS1VwYqUz/AI-Website-Portfolio?node-id=0-1&embed-host=share" allowfullscreen></iframe>
-                    </div>
-                    <div class="grid-item">
-                        <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/UFp5XBfIgC0nEH3bs9TSYN/Holza_Design?node-id=202-3&embed-host=share" allowfullscreen></iframe>
-                    </div>
-                    <div class="grid-item">
-                        <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/j7b9X64jvicfVeH3TWLebi/Korrekt-oder-Weg?node-id=0-1&embed-host=share" allowfullscreen></iframe>
-                    </div>
-                    <div class="grid-item">
-                        <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/wsDvVjRiZRW9nA9M1UhnZr/OnePager?node-id=0-1&embed-host=share" allowfullscreen></iframe>
-                    </div>
-                    <div class="grid-item">
-                        <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/f83Bg1WUZl5TmmgtG2rNWI/Levis-Stundenplan---Redesign?node-id=1-3&embed-host=share" allowfullscreen></iframe>
+
+                    <!-- UI/UX Section -->
+                    <div class="portfolio-section uiux">
+                        <div class="grid-sizer"></div>
+                        
+                        <div class="portfolio-item">
+                            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/hGi5gADltF2OlN94xUsio0/Fadljevic-PetPal?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+                        </div>
+                        <div class="portfolio-item">
+                            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/x3UeyVBFqzQq5JDgUqEVGq/Carload?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+                        </div>
+                        <div class="portfolio-item">
+                            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/ujnu1sdjctO8IOS1VwYqUz/AI-Website-Portfolio?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+                        </div>
+                        <div class="portfolio-item">
+                            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/UFp5XBfIgC0nEH3bs9TSYN/Holza_Design?node-id=202-3&embed-host=share" allowfullscreen></iframe>
+                        </div>
+                        <div class="portfolio-item">
+                            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/j7b9X64jvicfVeH3TWLebi/Korrekt-oder-Weg?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+                        </div>
+                        <div class="portfolio-item">
+                            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/wsDvVjRiZRW9nA9M1UhnZr/OnePager?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+                        </div>
+                        <div class="portfolio-item">
+                            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/f83Bg1WUZl5TmmgtG2rNWI/Levis-Stundenplan---Redesign?node-id=1-3&embed-host=share" allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
-    <!-- Am Ende des body-Tags, vor dem schließenden </body> -->
-    <script src="scripts/main.js"></script>
-    <script src="scripts/carousel.js"></script>
-    <script src="scripts/portfolio.js"></script>
-    <script src="scripts/language.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
-    <script src="scripts/masonry.js"></script>
+        </div>
+    </div>
     
+    <script src="scripts/script.js"></script>
+    <script src="scripts/portfolio.js"></script>
+
 </body>
 </html>
