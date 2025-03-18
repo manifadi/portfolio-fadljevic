@@ -6,10 +6,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Soziale Medien und Lebenslauf Links
     const socialLinks = {
-        'linkedin': 'https://www.linkedin.com/in/manuel-fadljevic/', // Ersetzen Sie dies mit Ihrem tatsächlichen LinkedIn-Profil
-        'github': 'https://github.com/manifadi', // Ersetzen Sie dies mit Ihrem tatsächlichen GitHub-Profil
-        'instagram': 'https://www.instagram.com/_maneyy/', // Ersetzen Sie dies mit Ihrem tatsächlichen Instagram-Profil
-        'cv': 'https://drive.google.com/file/d/1f1Oa18ebOX95dVLUpTGsB9y5XqMi4ldY/view?usp=sharing' // Ersetzen Sie dies mit Ihrem tatsächlichen Google Drive Link
+        'linkedin': 'https://www.linkedin.com/in/manuel-fadljevic/',
+        'github': 'https://github.com/manifadi',
+        'instagram': 'https://www.instagram.com/_maneyy/',
+        'cv': 'https://drive.google.com/file/d/1f1Oa18ebOX95dVLUpTGsB9y5XqMi4ldY/view?usp=sharing'
+    };
+    
+    // Website-Projekt-Links (URLs für die einzelnen Website-Projekte)
+    const websiteProjectLinks = {
+        'Holza': 'https://www.holza.at',
+        'GFS': 'https://www.golden-signals.com',
+        'Coaching': 'https://nmt-enzendorfer.com/',
+        'Yoga': 'https://www.yoga-touch.at'
     };
     
     // Initialer Zustand - Profil anzeigen
@@ -39,7 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event-Listener für die "View more" Spans in den Projektkarten
     const projectViewMoreSpans = document.querySelectorAll('.projects-box .project-info span');
     projectViewMoreSpans.forEach(span => {
-        span.addEventListener('click', function() {
+        span.addEventListener('click', function(e) {
+            e.stopPropagation(); // Verhindert, dass das Klick-Event zum Elternelement (project-card) weitergeleitet wird
             showPortfolio();
         });
     });
@@ -75,6 +84,47 @@ document.addEventListener('DOMContentLoaded', function() {
             } else if (target === 'profile') {
                 // Profil anzeigen
                 contentDiv.classList.remove('portfolio');
+            }
+        });
+    });
+    
+    // Event-Listener für Website-Projekte auf der Profilseite
+    const projectCards = document.querySelectorAll('.projects-box .project-card');
+    projectCards.forEach(card => {
+        card.addEventListener('click', function(e) {
+            // Wenn der Klick auf den View-More-Span erfolgt, nichts tun (der eigene Event-Listener kümmert sich darum)
+            if (e.target.tagName === 'SPAN' && e.target.textContent.trim() === 'View more') {
+                return;
+            }
+            
+            // Projektname aus dem h4-Element extrahieren
+            const projectName = this.querySelector('h4').textContent;
+            
+            // Prüfen, ob für dieses Projekt eine URL definiert ist
+            if (websiteProjectLinks[projectName]) {
+                // Website in einem neuen Tab öffnen
+                window.open(websiteProjectLinks[projectName], '_blank');
+                e.stopPropagation(); // Verhindert, dass andere Event-Listener ausgelöst werden
+            }
+        });
+    });
+    
+    // Event-Listener für Website-Projekte im Portfolio-Bereich
+    const portfolioWebsiteItems = document.querySelectorAll('.portfolio-section.websites .portfolio-item');
+    portfolioWebsiteItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            // Wenn der Klick auf den View-More-Span erfolgt, nichts tun
+            if (e.target.tagName === 'SPAN' && e.target.classList.contains('view-more')) {
+                return;
+            }
+            
+            // Projektname aus dem h3-Element extrahieren
+            const projectName = this.querySelector('h3').textContent;
+            
+            // Prüfen, ob für dieses Projekt eine URL definiert ist
+            if (websiteProjectLinks[projectName]) {
+                // Website in einem neuen Tab öffnen
+                window.open(websiteProjectLinks[projectName], '_blank');
             }
         });
     });

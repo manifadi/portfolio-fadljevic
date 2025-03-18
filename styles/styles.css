@@ -645,6 +645,9 @@ body {
 }
 
 @media (max-width: 768px) {
+    body{
+        max-height: 100dvh;
+    }
     /* Ändere das Layout für Mobilgeräte */
     .parent-layout {
         flex-direction: column-reverse; /* Menü nach unten verschieben */
