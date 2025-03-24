@@ -229,6 +229,37 @@ body {
     width: fit-content;
     height: fit-content;
     border-radius: 50px;
+    position: relative;
+    cursor: pointer;
+}
+
+.language-selector span {
+    position: relative;
+    display: inline-block;
+}
+
+.language-selector span::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 100;
+    margin-top: 5px;
+}
+
+.language-selector span:hover::after {
+    opacity: 1;
+    visibility: visible;
 }
 
 .content .title-box .profile-image {

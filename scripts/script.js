@@ -20,6 +20,194 @@ document.addEventListener('DOMContentLoaded', function() {
         'Yoga': 'https://www.yoga-touch.at'
     };
     
+    // Übersetzungen für die Sprachumschaltung
+    const translations = {
+        en: {
+            // Menü
+            'tooltip.profile': 'Profile',
+            'tooltip.portfolio': 'Portfolio',
+            'tooltip.cv': 'Curriculum Vitae',
+            
+            // Profil-Bereich
+            'profile.title': 'Digital Creative Specialist',
+            'profile.bio': 'I\'m a 24 year old Media-Technologist. I have been programming and doing creative media for more than 8 years. I create professional websites.',
+            'profile.location': 'Vienna, Austria',
+            
+            // Überschriften
+            'section.technologies': 'Technologies',
+            'section.tools': 'Tools',
+            'section.projects': 'Projects',
+            'section.experience': 'Experience',
+            'section.education': 'Education',
+            
+            // Projekt-Beschreibungen
+            'project.holza': 'Website for a musician called Holza',
+            'project.gfs': 'Website for a finance company',
+            'project.coaching': 'Website for a neuromental coach',
+            'project.yoga': 'Website for a yoga instructor',
+            'view.more': 'view more →',
+            
+            // Portfolio-Bereich
+            'portfolio.title': 'Portfolio',
+            'portfolio.websites': 'Websites',
+            'portfolio.graphic': 'Graphic Design',
+            'portfolio.uiux': 'UI/UX',
+            
+            // Portfolio-Projekt-Beschreibungen
+            'portfolio.holza': 'Website for a musician',
+            'portfolio.gfs': 'Website for a finance company',
+            'portfolio.coaching': 'Website for a neuromental coach',
+            'portfolio.yoga': 'Website for a yoga instructor',
+            'portfolio.view.more': 'View more →',
+            
+            // Erfahrung und Ausbildung
+            'experience.marketing': 'Marketing',
+            'experience.media': 'Media Assistant',
+            'experience.intern': 'Intern',
+            'education.bachelor': 'Bachelor of Science',
+            
+            // Sprach-Umschalter
+            'language.tooltip': 'Umstellen auf Deutsch'
+        },
+        de: {
+            // Menü
+            'tooltip.profile': 'Profil',
+            'tooltip.portfolio': 'Portfolio',
+            'tooltip.cv': 'Lebenslauf',
+            
+            // Profil-Bereich
+            'profile.title': 'Digital Creative Specialist',
+            'profile.bio': 'Ich bin ein 24-jähriger Medien-Technologe. Ich programmiere und erstelle kreative Medien seit mehr als 8 Jahren. Ich entwickle professionelle Websites.',
+            'profile.location': 'Wien, Österreich',
+            
+            // Überschriften
+            'section.technologies': 'Technologien',
+            'section.tools': 'Werkzeuge',
+            'section.projects': 'Projekte',
+            'section.experience': 'Erfahrung',
+            'section.education': 'Ausbildung',
+            
+            // Projekt-Beschreibungen
+            'project.holza': 'Website für einen Musiker namens Holza',
+            'project.gfs': 'Website für ein Finanzunternehmen',
+            'project.coaching': 'Website für einen Neuromental-Coach',
+            'project.yoga': 'Website für eine Yoga-Lehrerin',
+            'view.more': 'mehr anzeigen →',
+            
+            // Portfolio-Bereich
+            'portfolio.title': 'Portfolio',
+            'portfolio.websites': 'Webseiten',
+            'portfolio.graphic': 'Grafikdesign',
+            'portfolio.uiux': 'UI/UX',
+            
+            // Portfolio-Projekt-Beschreibungen
+            'portfolio.holza': 'Website für einen Musiker',
+            'portfolio.gfs': 'Website für ein Finanzunternehmen',
+            'portfolio.coaching': 'Website für einen Neuromental-Coach',
+            'portfolio.yoga': 'Website für eine Yoga-Lehrerin',
+            'portfolio.view.more': 'Mehr anzeigen →',
+            
+            // Erfahrung und Ausbildung
+            'experience.marketing': 'Marketing',
+            'experience.media': 'Medien-Assistent',
+            'experience.intern': 'Praktikant',
+            'education.bachelor': 'Bachelor of Science',
+            
+            // Sprach-Umschalter
+            'language.tooltip': 'Switch to English'
+        }
+    };
+    
+    // Aktuelle Sprache (Standard: Englisch)
+    let currentLanguage = 'en';
+    
+    // Funktion zur Aktualisierung der Sprache
+    function updateLanguage(language) {
+        currentLanguage = language;
+        
+        // Sprach-Umschalter aktualisieren
+        const languageSelector = document.querySelector('.language-selector span');
+        languageSelector.textContent = language.toUpperCase();
+        languageSelector.setAttribute('data-tooltip', translations[language]['language.tooltip']);
+        
+        // Menü-Tooltips aktualisieren
+        document.querySelector('.menu-item a[href="#profile"] .tooltip').textContent = translations[language]['tooltip.profile'];
+        document.querySelector('.menu-item a[href="#portfolio"] .tooltip').textContent = translations[language]['tooltip.portfolio'];
+        document.querySelector('.menu-item a[href="#cv"] .tooltip').textContent = translations[language]['tooltip.cv'];
+        
+        // Profil-Bereich aktualisieren
+        document.querySelector('.profile-info h2').textContent = translations[language]['profile.title'];
+        document.querySelector('.profile-info .bio').textContent = translations[language]['profile.bio'];
+        document.querySelector('.profile-info .location').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${translations[language]['profile.location']}`;
+        
+        // Überschriften aktualisieren
+        document.querySelector('.tech-box .box-header h3').textContent = translations[language]['section.technologies'];
+        document.querySelector('.tools-box .box-header h3').textContent = translations[language]['section.tools'];
+        document.querySelector('.projects-box .box-header h3').textContent = translations[language]['section.projects'];
+        document.querySelector('.experience-box .box-header h3').textContent = translations[language]['section.experience'];
+        document.querySelector('.education .box-header h3').textContent = translations[language]['section.education'];
+        
+        // Projekt-Beschreibungen aktualisieren
+        const projectCards = document.querySelectorAll('.projects-box .project-card');
+        projectCards.forEach(card => {
+            const projectName = card.querySelector('h4').textContent;
+            const projectKey = projectName.toLowerCase();
+            if (translations[language][`project.${projectKey}`]) {
+                card.querySelector('p').textContent = translations[language][`project.${projectKey}`];
+            }
+        });
+        
+        // "View more" Link aktualisieren
+        document.querySelector('.projects-box .view-more').textContent = translations[language]['view.more'];
+        document.querySelectorAll('.projects-box .project-info span').forEach(span => {
+            span.textContent = translations[language]['view.more'].split(' ')[0] + ' ' + translations[language]['view.more'].split(' ')[1];
+        });
+        
+        // Portfolio-Bereich aktualisieren
+        if (document.querySelector('.portfolio-header h1')) {
+            document.querySelector('.portfolio-header h1').textContent = translations[language]['portfolio.title'];
+            document.querySelector('.filter-btn[data-filter="websites"]').textContent = translations[language]['portfolio.websites'];
+            document.querySelector('.filter-btn[data-filter="graphic-design"]').textContent = translations[language]['portfolio.graphic'];
+            document.querySelector('.filter-btn[data-filter="uiux"]').textContent = translations[language]['portfolio.uiux'];
+        }
+        
+        // Portfolio-Projekt-Beschreibungen aktualisieren
+        const portfolioItems = document.querySelectorAll('.portfolio-section.websites .portfolio-item');
+        portfolioItems.forEach(item => {
+            const projectName = item.querySelector('h3').textContent;
+            const projectKey = projectName.toLowerCase();
+            if (translations[language][`portfolio.${projectKey}`]) {
+                item.querySelector('p').textContent = translations[language][`portfolio.${projectKey}`];
+            }
+            item.querySelector('.view-more').textContent = translations[language]['portfolio.view.more'];
+        });
+        
+        // Erfahrung und Ausbildung aktualisieren
+        document.querySelectorAll('.experience-entry').forEach(entry => {
+            const title = entry.querySelector('h4').textContent;
+            if (title === 'Marketing') {
+                entry.querySelector('h4').textContent = translations[language]['experience.marketing'];
+            } else if (title === 'Media Assistant') {
+                entry.querySelector('h4').textContent = translations[language]['experience.media'];
+            }
+            
+            // Intern-Text aktualisieren
+            const dateText = entry.querySelector('.date').textContent;
+            if (dateText.includes('Intern')) {
+                entry.querySelector('.date').textContent = dateText.replace('Intern', translations[language]['experience.intern']);
+            }
+        });
+        
+        // Ausbildung aktualisieren
+        document.querySelector('.education-entry h4').textContent = translations[language]['education.bachelor'];
+        
+        // Meta-Title aktualisieren (optional)
+        document.title = `Manuel Fadljevic - ${translations[language]['profile.title']}`;
+        
+        // Speichern der Spracheinstellung im localStorage
+        localStorage.setItem('preferredLanguage', language);
+    }
+    
     // Initialer Zustand - Profil anzeigen
     if (contentDiv.classList.contains('portfolio')) {
         contentDiv.classList.remove('portfolio');
@@ -93,7 +281,8 @@ document.addEventListener('DOMContentLoaded', function() {
     projectCards.forEach(card => {
         card.addEventListener('click', function(e) {
             // Wenn der Klick auf den View-More-Span erfolgt, nichts tun (der eigene Event-Listener kümmert sich darum)
-            if (e.target.tagName === 'SPAN' && e.target.textContent.trim() === 'View more') {
+            if (e.target.tagName === 'SPAN' && e.target.textContent.trim().startsWith('View') || 
+                e.target.tagName === 'SPAN' && e.target.textContent.trim().startsWith('mehr')) {
                 return;
             }
             
@@ -197,5 +386,26 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialisiere Masonry, wenn die Seite mit Portfolio-Ansicht geladen wird
     if (contentDiv.classList.contains('portfolio')) {
         setTimeout(initMasonry, 150);
+    }
+    
+    // Sprachumschaltung einrichten
+    const languageSelector = document.querySelector('.language-selector');
+    if (languageSelector) {
+        // Tooltip für den Sprachumschalter hinzufügen
+        const languageSpan = languageSelector.querySelector('span');
+        languageSpan.setAttribute('data-tooltip', translations[currentLanguage]['language.tooltip']);
+        
+        // Event-Listener für Sprachumschaltung
+        languageSelector.addEventListener('click', function() {
+            // Sprache umschalten
+            const newLanguage = currentLanguage === 'en' ? 'de' : 'en';
+            updateLanguage(newLanguage);
+        });
+        
+        // Gespeicherte Spracheinstellung aus localStorage laden
+        const savedLanguage = localStorage.getItem('preferredLanguage');
+        if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'de')) {
+            updateLanguage(savedLanguage);
+        }
     }
 });
