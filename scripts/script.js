@@ -4,6 +4,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const contentDiv = document.querySelector('.content');
     const portfolioContainer = document.querySelector('.portfolio-container');
     
+    setTimeout(function() {
+        // Entferne die Transition-Klassen
+        const contentElement = document.querySelector('.content');
+        if (contentElement && contentElement.classList.contains('content-begin-transition')) {
+            contentElement.classList.remove('content-begin-transition');
+        }
+        
+        const menuElement = document.querySelector('.side-menu');
+        if (menuElement && menuElement.classList.contains('menu-begin-transition')) {
+            menuElement.classList.remove('menu-begin-transition');
+        }
+    }, 100); // 100ms Verzögerung für einen besseren visuellen Effekt
+
     // Soziale Medien und Lebenslauf Links
     const socialLinks = {
         'linkedin': 'https://www.linkedin.com/in/manuel-fadljevic/',
