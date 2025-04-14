@@ -174,6 +174,40 @@
     opacity: 1;
 }
 
+/* Füge diese Styles am Ende der portfolio.css Datei hinzu */
+.figma-placeholder {
+    width: 100%;
+    height: 450px;
+    background-color: rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.figma-loading {
+    text-align: center;
+}
+
+.figma-loading p {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.load-figma-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.load-figma-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
 /* Responsive Design - verbessert für verschiedene Bildschirmgrößen */
 @media (min-width: 1400px) {
     .portfolio-header h1 {

@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'linkedin': 'https://www.linkedin.com/in/manuel-fadljevic/',
         'github': 'https://github.com/manifadi',
         'instagram': 'https://www.instagram.com/_maneyy/',
-        'cv': 'https://drive.google.com/file/d/1f1Oa18ebOX95dVLUpTGsB9y5XqMi4ldY/view?usp=sharing'
+        'cv': 'https://drive.google.com/file/d/1D3lpFMqoU1El5InZ97wyD1jDT5tsvcu7/view?usp=sharing'
     };
     
     // Website-Projekt-Links (URLs für die einzelnen Website-Projekte)
@@ -80,7 +80,11 @@ document.addEventListener('DOMContentLoaded', function() {
             'education.bachelor': 'Bachelor of Science',
             
             // Sprach-Umschalter
-            'language.tooltip': 'Umstellen auf Deutsch'
+            'language.tooltip': 'Umstellen auf Deutsch',
+            
+            // Figma-Platzhalter
+            'figma.design': 'Figma Design',
+            'figma.load': 'Load Design'
         },
         de: {
             // Menü
@@ -127,7 +131,11 @@ document.addEventListener('DOMContentLoaded', function() {
             'education.bachelor': 'Bachelor of Science',
             
             // Sprach-Umschalter
-            'language.tooltip': 'Switch to English'
+            'language.tooltip': 'Switch to English',
+            
+            // Figma-Platzhalter
+            'figma.design': 'Figma Design',
+            'figma.load': 'Design laden'
         }
     };
     
@@ -195,19 +203,30 @@ document.addEventListener('DOMContentLoaded', function() {
             item.querySelector('.view-more').textContent = translations[language]['portfolio.view.more'];
         });
         
+        // Figma-Platzhalter aktualisieren
+        document.querySelectorAll('.figma-loading p').forEach(p => {
+            p.textContent = translations[language]['figma.design'];
+        });
+        
+        document.querySelectorAll('.load-figma-btn').forEach(btn => {
+            btn.textContent = translations[language]['figma.load'];
+        });
+        
         // Erfahrung und Ausbildung aktualisieren
         document.querySelectorAll('.experience-entry').forEach(entry => {
             const title = entry.querySelector('h4').textContent;
-            if (title === 'Marketing') {
+            if (title === 'Marketing' || title === translations.de['experience.marketing']) {
                 entry.querySelector('h4').textContent = translations[language]['experience.marketing'];
-            } else if (title === 'Media Assistant') {
+            } else if (title === 'Media Assistant' || title === translations.de['experience.media']) {
                 entry.querySelector('h4').textContent = translations[language]['experience.media'];
             }
             
             // Intern-Text aktualisieren
             const dateText = entry.querySelector('.date').textContent;
-            if (dateText.includes('Intern')) {
-                entry.querySelector('.date').textContent = dateText.replace('Intern', translations[language]['experience.intern']);
+            if (dateText.includes('Intern') || dateText.includes(translations.de['experience.intern'])) {
+                const updatedText = dateText.replace('Intern', translations[language]['experience.intern'])
+                                          .replace(translations.de['experience.intern'], translations[language]['experience.intern']);
+                entry.querySelector('.date').textContent = updatedText;
             }
         });
         
@@ -226,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
         contentDiv.classList.remove('portfolio');
     }
     
-    // Funktion zum Wechseln zur Portfolio-Ansicht
+    // Optimierte Funktion zum Wechseln zur Portfolio-Ansicht
     function showPortfolio() {
         // Portfolio anzeigen
         contentDiv.classList.add('portfolio');
@@ -235,8 +254,83 @@ document.addEventListener('DOMContentLoaded', function() {
         menuItems.forEach(mi => mi.classList.remove('active'));
         document.querySelector('.side-menu .menu-item a[href="#portfolio"]').parentElement.classList.add('active');
         
-        // Masonry mit Verzögerung initialisieren
-        setTimeout(initMasonry, 150);
+        // Verzögertes Laden der Portfolio-Inhalte
+        setTimeout(() => {
+            // Nur die aktiv sichtbare Sektion initialisieren
+            const activeSection = document.querySelector('.portfolio-section.active');
+            if (activeSection) {
+                const sectionClass = activeSection.classList[1];
+                initMasonryForSection(activeSection, sectionClass);
+                
+                // Lazy-Load für Figma-Frames
+                if (sectionClass === 'uiux') {
+                    lazyLoadFigmaFrames();
+                }
+            }
+        }, 300);
+    }
+    
+    // Funktion zum verzögerten Laden der Figma-iFrames
+    function lazyLoadFigmaFrames() {
+        // Alle iframe-Container im UI/UX-Bereich
+        const iframeContainers = document.querySelectorAll('.portfolio-section.uiux .portfolio-item');
+        
+        iframeContainers.forEach(container => {
+            // Prüfen, ob bereits ein Platzhalter erstellt wurde
+            if (container.querySelector('.figma-placeholder')) {
+                return;
+            }
+            
+            // Daten-Attribute für die Figma-URLs speichern
+            const figmaFrame = container.querySelector('iframe');
+            if (figmaFrame) {
+                const figmaSrc = figmaFrame.getAttribute('src');
+                
+                // Iframe-Quellcode entfernen und durch Platzhalter ersetzen
+                container.innerHTML = `
+                    <div class="figma-placeholder">
+                        <div class="figma-loading">
+                            <p>${translations[currentLanguage]['figma.design']}</p>
+                            <button class="load-figma-btn">${translations[currentLanguage]['figma.load']}</button>
+                        </div>
+                    </div>
+                `;
+                
+                // Speichere die Figma-URL als Datenattribut
+                container.setAttribute('data-figma-src', figmaSrc);
+                
+                // Event-Listener für den Lade-Button
+                const loadButton = container.querySelector('.load-figma-btn');
+                loadButton.addEventListener('click', function() {
+                    // Iframe erst beim Klick laden
+                    container.innerHTML = `<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="${figmaSrc}" allowfullscreen></iframe>`;
+                });
+            }
+        });
+    }
+    
+    // Optimierte Masonry-Initialisierung nur für eine Sektion
+    function initMasonryForSection(section, sectionClass) {
+        // Prüfen, ob Masonry bereits initialisiert wurde
+        if (masonryInstances[sectionClass]) {
+            masonryInstances[sectionClass].destroy();
+        }
+        
+        // Neue Masonry-Instanz erstellen
+        const masonry = new Masonry(section, {
+            itemSelector: '.portfolio-item',
+            columnWidth: '.grid-sizer',
+            percentPosition: true,
+            gutter: 20
+        });
+        
+        // Speichere die Masonry-Instanz
+        masonryInstances[sectionClass] = masonry;
+        
+        // Neu anordnen, nachdem Bilder geladen sind
+        imagesLoaded(section, function() {
+            masonry.layout();
+        });
     }
     
     // Event-Listener für die "View more" Links in den Projektkarten
@@ -292,6 +386,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event-Listener für Website-Projekte auf der Profilseite
     const projectCards = document.querySelectorAll('.projects-box .project-card');
     projectCards.forEach(card => {
+        // Lazy Loading für Projektbilder
+        const img = card.querySelector('img');
+        if (img && !img.hasAttribute('loading')) {
+            img.setAttribute('loading', 'lazy');
+        }
+        
         card.addEventListener('click', function(e) {
             // Wenn der Klick auf den View-More-Span erfolgt, nichts tun (der eigene Event-Listener kümmert sich darum)
             if (e.target.tagName === 'SPAN' && e.target.textContent.trim().startsWith('View') || 
@@ -314,6 +414,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event-Listener für Website-Projekte im Portfolio-Bereich
     const portfolioWebsiteItems = document.querySelectorAll('.portfolio-section.websites .portfolio-item');
     portfolioWebsiteItems.forEach(item => {
+        // Lazy Loading für Portfolio-Bilder
+        const img = item.querySelector('img');
+        if (img && !img.hasAttribute('loading')) {
+            img.setAttribute('loading', 'lazy');
+        }
+        
         item.addEventListener('click', function(e) {
             // Wenn der Klick auf den View-More-Span erfolgt, nichts tun
             if (e.target.tagName === 'SPAN' && e.target.classList.contains('view-more')) {
@@ -331,7 +437,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Filter-Funktionalität für Portfolio
+    // Optimierte Filter-Funktionalität für Portfolio
     if (portfolioContainer) {
         const filterButtons = document.querySelectorAll('.filter-btn');
         const sections = document.querySelectorAll('.portfolio-section');
@@ -349,12 +455,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (section.classList.contains(filter)) {
                         section.classList.add('active');
                         
-                        // Masonry mit Verzögerung neu anordnen
+                        // Verzögertes Laden der Inhalte
                         setTimeout(() => {
-                            if (masonryInstances && masonryInstances[filter]) {
-                                masonryInstances[filter].layout();
+                            initMasonryForSection(section, filter);
+                            
+                            // Lazy-Load für Figma-Frames wenn UI/UX ausgewählt
+                            if (filter === 'uiux') {
+                                lazyLoadFigmaFrames();
                             }
-                        }, 150);
+                        }, 100);
                     }
                 });
             });
@@ -367,38 +476,23 @@ document.addEventListener('DOMContentLoaded', function() {
     // Funktion zur Initialisierung von Masonry
     function initMasonry() {
         if (document.querySelector('.portfolio-section')) {
-            const sections = document.querySelectorAll('.portfolio-section');
+            const sections = document.querySelectorAll('.portfolio-section.active');
             
             sections.forEach(section => {
                 const sectionClass = section.classList[1]; // z.B. "websites", "graphic-design", "uiux"
+                initMasonryForSection(section, sectionClass);
                 
-                // Falls bereits eine Masonry-Instanz existiert, zerstöre sie
-                if (masonryInstances[sectionClass]) {
-                    masonryInstances[sectionClass].destroy();
+                // Lazy-Load für Figma-Frames wenn UI/UX ausgewählt
+                if (sectionClass === 'uiux') {
+                    lazyLoadFigmaFrames();
                 }
-                
-                // Neue Masonry-Instanz erstellen
-                const masonry = new Masonry(section, {
-                    itemSelector: '.portfolio-item',
-                    columnWidth: '.grid-sizer',
-                    percentPosition: true,
-                    gutter: 20
-                });
-                
-                // Speichere die Masonry-Instanz
-                masonryInstances[sectionClass] = masonry;
-                
-                // Neu anordnen, nachdem Bilder geladen sind
-                imagesLoaded(section, function() {
-                    masonry.layout();
-                });
             });
         }
     }
     
     // Initialisiere Masonry, wenn die Seite mit Portfolio-Ansicht geladen wird
     if (contentDiv.classList.contains('portfolio')) {
-        setTimeout(initMasonry, 150);
+        setTimeout(initMasonry, 300);
     }
     
     // Sprachumschaltung einrichten
@@ -421,4 +515,11 @@ document.addEventListener('DOMContentLoaded', function() {
             updateLanguage(savedLanguage);
         }
     }
+    
+    // Lazy Loading für alle Bilder im Dokument
+    document.querySelectorAll('img').forEach(img => {
+        if (!img.hasAttribute('loading')) {
+            img.setAttribute('loading', 'lazy');
+        }
+    });
 });
