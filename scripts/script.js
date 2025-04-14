@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Figma-Platzhalter
             'figma.design': 'Figma Design',
-            'figma.load': 'Load Design'
+            'figma.loading': 'Loading design...'
         },
         de: {
             // Menü
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Figma-Platzhalter
             'figma.design': 'Figma Design',
-            'figma.load': 'Design laden'
+            'figma.loading': 'Design wird geladen...'
         }
     };
     
@@ -208,8 +208,8 @@ document.addEventListener('DOMContentLoaded', function() {
             p.textContent = translations[language]['figma.design'];
         });
         
-        document.querySelectorAll('.load-figma-btn').forEach(btn => {
-            btn.textContent = translations[language]['figma.load'];
+        document.querySelectorAll('.figma-loading .loading-text').forEach(span => {
+            span.textContent = translations[language]['figma.loading'];
         });
         
         // Erfahrung und Ausbildung aktualisieren
@@ -264,20 +264,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Lazy-Load für Figma-Frames
                 if (sectionClass === 'uiux') {
-                    lazyLoadFigmaFrames();
+                    setupFigmaIntersectionObserver();
                 }
             }
         }, 300);
     }
     
-    // Funktion zum verzögerten Laden der Figma-iFrames
-    function lazyLoadFigmaFrames() {
+    // Funktion zum verzögerten Laden der Figma-iFrames mit Intersection Observer
+    function setupFigmaIntersectionObserver() {
         // Alle iframe-Container im UI/UX-Bereich
         const iframeContainers = document.querySelectorAll('.portfolio-section.uiux .portfolio-item');
         
         iframeContainers.forEach(container => {
             // Prüfen, ob bereits ein Platzhalter erstellt wurde
-            if (container.querySelector('.figma-placeholder')) {
+            if (container.querySelector('.figma-placeholder') || container.hasAttribute('data-figma-loaded')) {
                 return;
             }
             
@@ -291,7 +291,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="figma-placeholder">
                         <div class="figma-loading">
                             <p>${translations[currentLanguage]['figma.design']}</p>
-                            <button class="load-figma-btn">${translations[currentLanguage]['figma.load']}</button>
+                            <div class="loading-spinner"></div>
+                            <span class="loading-text">${translations[currentLanguage]['figma.loading']}</span>
                         </div>
                     </div>
                 `;
@@ -299,12 +300,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Speichere die Figma-URL als Datenattribut
                 container.setAttribute('data-figma-src', figmaSrc);
                 
-                // Event-Listener für den Lade-Button
-                const loadButton = container.querySelector('.load-figma-btn');
-                loadButton.addEventListener('click', function() {
-                    // Iframe erst beim Klick laden
-                    container.innerHTML = `<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="${figmaSrc}" allowfullscreen></iframe>`;
+                // Intersection Observer erstellen
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Figma-Frame laden, wenn Container sichtbar wird
+                            const container = entry.target;
+                            const figmaSrc = container.getAttribute('data-figma-src');
+                            
+                            // Kurze Verzögerung für besseres UX
+                            setTimeout(() => {
+                                container.innerHTML = `<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="${figmaSrc}" allowfullscreen></iframe>`;
+                                container.setAttribute('data-figma-loaded', 'true');
+                            }, 500);
+                            
+                            // Observer entfernen, nachdem das Element geladen wurde
+                            observer.unobserve(container);
+                        }
+                    });
+                }, {
+                    threshold: 0.1 // 10% des Elements muss sichtbar sein
                 });
+                
+                // Beobachte den Container
+                observer.observe(container);
             }
         });
     }
@@ -461,7 +480,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             
                             // Lazy-Load für Figma-Frames wenn UI/UX ausgewählt
                             if (filter === 'uiux') {
-                                lazyLoadFigmaFrames();
+                                setupFigmaIntersectionObserver();
                             }
                         }, 100);
                     }
@@ -484,7 +503,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Lazy-Load für Figma-Frames wenn UI/UX ausgewählt
                 if (sectionClass === 'uiux') {
-                    lazyLoadFigmaFrames();
+                    setupFigmaIntersectionObserver();
                 }
             });
         }
