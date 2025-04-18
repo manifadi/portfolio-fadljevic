@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const portfolioContainer = document.querySelector('.portfolio-container');
     
     // Globale Variable für Masonry-Instanzen
-    let masonryInstances = {};
+    window.masonryInstances = {}; // Mache masonryInstances global verfügbar
     
     // Funktion zur Initialisierung von Masonry
     function initMasonry() {
@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 const sectionClass = section.classList[1]; // z.B. "websites", "graphic-design", "uiux"
                 
                 // Falls bereits eine Masonry-Instanz existiert, zerstöre sie
-                if (masonryInstances[sectionClass]) {
-                    masonryInstances[sectionClass].destroy();
+                if (window.masonryInstances[sectionClass]) {
+                    window.masonryInstances[sectionClass].destroy();
                 }
                 
                 // Neue Masonry-Instanz erstellen
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 
                 // Speichere die Masonry-Instanz
-                masonryInstances[sectionClass] = masonry;
+                window.masonryInstances[sectionClass] = masonry;
                 
                 // Neu anordnen, nachdem Bilder geladen sind
                 imagesLoaded(section, function() {
@@ -43,31 +43,36 @@ document.addEventListener('DOMContentLoaded', function() {
     // Menü-Funktionalität für Portfolio-Filter
     if (portfolioContainer) {
         const filterButtons = document.querySelectorAll('.filter-btn');
-        const sections = document.querySelectorAll('.portfolio-section');
         
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Aktiven Button markieren
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Entsprechende Sektion anzeigen
-                const filter = this.getAttribute('data-filter');
-                sections.forEach(section => {
-                    section.classList.remove('active');
-                    if (section.classList.contains(filter)) {
-                        section.classList.add('active');
-                        
-                        // Masonry mit Verzögerung neu anordnen
-                        setTimeout(() => {
-                            if (masonryInstances && masonryInstances[filter]) {
-                                masonryInstances[filter].layout();
-                            }
-                        }, 150);
-                    }
+        // Wir verwenden jetzt die Übergangsfunktion aus portfolio-transitions.js
+        // Dieser Code bleibt als Fallback, falls portfolio-transitions.js nicht geladen ist
+        if (!window.transitionToSection) {
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Aktiven Button markieren
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Entsprechende Sektion anzeigen
+                    const filter = this.getAttribute('data-filter');
+                    const sections = document.querySelectorAll('.portfolio-section');
+                    
+                    sections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.classList.contains(filter)) {
+                            section.classList.add('active');
+                            
+                            // Masonry mit Verzögerung neu anordnen
+                            setTimeout(() => {
+                                if (window.masonryInstances && window.masonryInstances[filter]) {
+                                    window.masonryInstances[filter].layout();
+                                }
+                            }, 150);
+                        }
+                    });
                 });
             });
-        });
+        }
     }
     
     // Initialisiere Masonry, wenn die Seite mit Portfolio-Ansicht geladen wird

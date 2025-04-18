@@ -245,29 +245,36 @@ document.addEventListener('DOMContentLoaded', function() {
         contentDiv.classList.remove('portfolio');
     }
     
-    // Optimierte Funktion zum Wechseln zur Portfolio-Ansicht
+    // Ersetze die showPortfolio Funktion in script.js (etwa Zeile 248-270)
     function showPortfolio() {
-        // Portfolio anzeigen
-        contentDiv.classList.add('portfolio');
+        // Nutze die neue Übergangsfunktion, wenn verfügbar
+        if (window.pageTransitions && window.pageTransitions.toPortfolio) {
+            window.pageTransitions.toPortfolio();
+        } else {
+            // Fallback zum alten Verhalten
+            contentDiv.classList.add('portfolio');
+        }
         
         // Aktiven Menüpunkt markieren (Portfolio)
         menuItems.forEach(mi => mi.classList.remove('active'));
         document.querySelector('.side-menu .menu-item a[href="#portfolio"]').parentElement.classList.add('active');
         
-        // Verzögertes Laden der Portfolio-Inhalte
+        // In der showPortfolio Funktion, ändere die Verzögerung von 800ms auf 500ms
         setTimeout(() => {
             // Nur die aktiv sichtbare Sektion initialisieren
             const activeSection = document.querySelector('.portfolio-section.active');
             if (activeSection) {
                 const sectionClass = activeSection.classList[1];
-                initMasonryForSection(activeSection, sectionClass);
+                if (typeof initMasonryForSection === 'function') {
+                    initMasonryForSection(activeSection, sectionClass);
+                }
                 
                 // Lazy-Load für Figma-Frames
-                if (sectionClass === 'uiux') {
+                if (sectionClass === 'uiux' && typeof setupFigmaIntersectionObserver === 'function') {
                     setupFigmaIntersectionObserver();
                 }
             }
-        }, 300);
+        }, 500); // Kürzere Verzögerung für den Übergang
     }
     
     // Funktion zum verzögerten Laden der Figma-iFrames mit Intersection Observer
@@ -367,10 +374,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Menü-Navigation
+    // In script.js, im Event-Listener für Menü-Items (etwa Zeile 355-385)
     menuItems.forEach(item => {
         item.addEventListener('click', function(e) {
             const linkElement = this.querySelector('a');
+            if (!linkElement) return;
+            
             const target = linkElement.getAttribute('href').substring(1);
             
             // Prüfen, ob es sich um einen externen Link handelt
@@ -378,7 +387,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault(); // Verhindert das Standard-Link-Verhalten
                 
                 // Öffne den entsprechenden Link in einem neuen Tab
-                if (socialLinks[target]) {
+                if (socialLinks && socialLinks[target]) {
                     window.open(socialLinks[target], '_blank');
                 }
                 
@@ -396,8 +405,13 @@ document.addEventListener('DOMContentLoaded', function() {
             if (target === 'portfolio') {
                 showPortfolio();
             } else if (target === 'profile') {
-                // Profil anzeigen
-                contentDiv.classList.remove('portfolio');
+                // Profil anzeigen mit Übergang
+                if (window.pageTransitions && window.pageTransitions.toProfile) {
+                    window.pageTransitions.toProfile();
+                } else {
+                    // Fallback zum alten Verhalten
+                    contentDiv.classList.remove('portfolio');
+                }
             }
         });
     });

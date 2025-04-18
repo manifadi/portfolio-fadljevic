@@ -1,0 +1,63 @@
+/* Basis-Stile für Übergänge */
+.portfolio-container, .more-information-box, .title-box {
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    will-change: opacity, transform;
+}
+
+/* Anfangszustand für Portfolio-Container */
+.content:not(.portfolio) .portfolio-container {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute; /* Verhindert, dass es Platz einnimmt, wenn ausgeblendet */
+}
+
+/* Anfangszustand für Profil-Content */
+.content.portfolio .more-information-box {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute; /* Verhindert, dass es Platz einnimmt, wenn ausgeblendet */
+}
+
+/* Verbesserte Übergänge für Portfolio-Sektionen */
+.portfolio-section {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    will-change: opacity, transform;
+}
+
+.portfolio-section:not(.active) {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    position: absolute; /* Verhindert, dass es Platz einnimmt, wenn ausgeblendet */
+}
+
+/* Verbesserte Übergänge für Portfolio-Items */
+.portfolio-item {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition-delay: calc(var(--item-index, 0) * 0.05s);
+    will-change: opacity, transform;
+}
+
+.portfolio-section:not(.active) .portfolio-item {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Animation für title-box */
+.title-box {
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                opacity 0.6s ease;
+    will-change: transform, opacity;
+}
+
+/* Hover-Effekt für title-box (optional) */
+.title-box:hover {
+    transform: scale(1.02);
+}
+
+/* Verbesserte Performance für Animationen */
+.portfolio-container, .more-information-box, .title-box, .portfolio-section, .portfolio-item {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
