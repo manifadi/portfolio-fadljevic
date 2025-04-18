@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Profil-Bereich
             'profile.title': 'Digital Creative Specialist',
-            'profile.bio': 'I\'m a 24 year old Media-Technologist. I have been programming and doing creative media for more than 8 years. I create professional websites.',
+            'profile.bio': 'I\'m a 24 year old Media-Technologist with an educational background spanning over 8 years in programming and creative media. During my studies, I\'ve developed skills in creating digital projects.',
             'profile.location': 'Vienna, Austria',
             
             // Überschriften
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Profil-Bereich
             'profile.title': 'Digital Creative Specialist',
-            'profile.bio': 'Ich bin ein 24-jähriger Medien-Technologe. Ich programmiere und erstelle kreative Medien seit mehr als 8 Jahren. Ich entwickle professionelle Websites.',
+            'profile.bio': 'Ich bin ein 24-jähriger Medientechniker mit einer über 8-jährigen Ausbildung im Bereich Programmierung und kreative Medien. Während meines Studiums habe ich Fähigkeiten in der Erstellung digitaler Projekte entwickelt.',
             'profile.location': 'Wien, Österreich',
             
             // Überschriften
