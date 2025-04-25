@@ -87,4 +87,35 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(initMasonry, 150);
         });
     }
+    
+    // NEU: Füge Klick-Event-Listener zu allen Portfolio-Items hinzu
+    function addPortfolioItemClickHandlers() {
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            // Nur wenn das Item eine URL hat und noch keinen Klick-Handler
+            if (item.getAttribute('data-url') && !item.hasAttribute('data-click-handler-added')) {
+                item.setAttribute('data-click-handler-added', 'true');
+                item.style.cursor = 'pointer';
+                
+                item.addEventListener('click', function(e) {
+                    // Nur wenn nicht auf einen Link oder Button innerhalb des Items geklickt wurde
+                    if (!e.target.closest('a') && !e.target.closest('button')) {
+                        const url = this.getAttribute('data-url');
+                        if (url) {
+                            window.open(url, '_blank', 'noopener,noreferrer');
+                        }
+                    }
+                });
+            }
+        });
+    }
+    
+    // Rufe die Funktion beim Laden und nach Filteränderungen auf
+    addPortfolioItemClickHandlers();
+    
+    // Event-Listener für Filter-Buttons, um Klick-Handler nach Filterwechsel hinzuzufügen
+    document.querySelectorAll('.filter-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            setTimeout(addPortfolioItemClickHandlers, 200);
+        });
+    });
 });

@@ -1,0 +1,58 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Holza",
+      "description": "Website for a musician called Holza",
+      "image": "./assets/project-images/holza-website.jpg",
+      "category": "websites",
+      "priority": 1,
+      "url": "https://www.holza.at/"
+    },
+    {
+      "id": 2,
+      "title": "Webhorizon",
+      "description": "Webdevelopment company",
+      "image": "./assets/project-images/webhorizon.jpg",
+      "category": "websites",
+      "priority": 2,
+      "url": "https://manifadi.github.io/webhorizon/"
+    },
+    {
+      "id": 3,
+      "title": "Coaching",
+      "description": "Website for a neuromental coach",
+      "image": "./assets/project-images/nmt-website.jpg",
+      "category": "websites",
+      "priority": 3,
+      "url": "https://nmt-enzendorfer.com/"
+    },
+    {
+      "id": 4,
+      "title": "Yoga",
+      "description": "Website for a yoga instructor",
+      "image": "./assets/project-images/yoga-website.jpg",
+      "category": "websites",
+      "priority": 4,
+      "url": "https://yoga-touch.at"
+    },
+    {
+      "id": 5,
+      "title": "Finanzexperte",
+      "description": "Website für einen Finanzexperten",
+      "image": "./assets/project-images/finanzexperte.jpg",
+      "category": "websites",
+      "priority": 5,
+      "url": "https://manifadi.github.io/florianwalch/"
+    },
+    {
+      "id": 6,
+      "title": "GFS",
+      "description": "Website für ein Finanzunternehmen",
+      "image": "./assets/project-images/golden-website.jpg",
+      "category": "websites",
+      "priority": 6,
+      "url": "https://www.golden-signals.com/"
+    }
+  ]
+}

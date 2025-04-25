@@ -479,28 +479,30 @@ body {
 .projects-box .box-body {
     flex: 1;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 1rem;
-}
-
-.projects-box .project-cards {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    flex: 1;
+    overflow-y: auto;
+    align-content: flex-start;
+    max-height: 100%;
 }
 
 .projects-box .project-card {
     position: relative;
-    flex: 1;
-    background-color: var(--dark-color);
-    height: 100%;
+    flex: 0 0 calc(50% - 0.5rem); /* Genau 2 Karten pro Zeile */
+    height: calc((100% - 1rem) / 2); /* Für 2 Reihen (4 Projekte) */
+    min-height: 120px;
     display: flex;
     align-items: flex-end;
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.3s ease;
     border-radius: 6px;
+    margin-bottom: 0;
+}
+
+/* Bei genau 6 Projekten oder weniger, keine Scrollbar anzeigen */
+.projects-box .box-body.no-scroll {
+    overflow-y: hidden;
 }
 
 .projects-box .project-card img {
@@ -567,7 +569,7 @@ body {
     margin-bottom: 0.5rem;
 }
 
-.projects-box .project-info span {
+.projects-box .project-info a {
     display: flex;
     align-items: center;
     font-size: 0.75rem;
@@ -584,13 +586,13 @@ body {
     cursor: pointer;
 }
 
-.projects-box .project-info span::after {
+.projects-box .project-info a::after {
     content: "→";
     margin-left: 5px;
     font-size: 1.1em;
 }
 
-.projects-box .project-card:hover .project-info span {
+.projects-box .project-card:hover .project-info a {
     transform: translateY(0);
     opacity: 1;
 }
@@ -734,13 +736,14 @@ body {
     }
 
     .projects-box .box-body {
-        overflow-y: auto;
+        flex-direction: row;
+        overflow-y: scroll;
     }
-
-    .projects-box .box-body .project-cards {
-        flex-direction: column;
-        flex: 0 0 auto;
-        height: auto;
+    
+    .projects-box .project-card {
+        flex: 0 0 150px;
+        height: 150px;
+        min-width: 100%;
     }
     
     .projects-box .box-header h3 {
@@ -875,13 +878,6 @@ body {
 
     .projects-box .box-body {
         overflow-y: visible;
-        height: auto;
-    }
-
-    .projects-box .project-cards {
-        flex-direction: column;
-        gap: 0.8rem;
-        flex: 0 0 auto;
         height: auto;
     }
     
