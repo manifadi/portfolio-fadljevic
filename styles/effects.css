@@ -73,20 +73,6 @@ body.has-custom-cursor * {
                 top 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   Subtle Background Drift
-═══════════════════════════════════════════════════════════════ */
-body {
-    background-size: 112% !important;
-    animation: bgDrift 35s ease-in-out infinite;
-}
-
-@keyframes bgDrift {
-    0%   { background-position: 48% 50%; }
-    33%  { background-position: 52% 48%; }
-    66%  { background-position: 50% 53%; }
-    100% { background-position: 48% 50%; }
-}
 
 /* ═══════════════════════════════════════════════════════════════
    Specular Top-Edge Highlights  (Vision OS layered glass)
@@ -224,6 +210,33 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   Profile Email Link
+═══════════════════════════════════════════════════════════════ */
+.profile-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: rgba(255, 255, 255, 0.72);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 300;
+    transition: color 0.25s ease;
+}
+
+.profile-email:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Experience Description Line
+═══════════════════════════════════════════════════════════════ */
+.exp-description {
+    opacity: 0.6 !important;
+    line-height: 1.35 !important;
+    font-style: italic;
+}
+
+/* ═══════════════════════════════════════════════════════════════
    Active Filter Pill
 ═══════════════════════════════════════════════════════════════ */
 .filter-btn.active {
@@ -248,4 +261,83 @@ body {
 .side-menu .menu-item {
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
     will-change: transform;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Available for Work Badge
+═══════════════════════════════════════════════════════════════ */
+@keyframes pulse-green {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.35); }
+    50%       { box-shadow: 0 0 0 5px rgba(52, 199, 89, 0); }
+}
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.4; }
+}
+
+.open-to-work {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 13px;
+    background: rgba(52, 199, 89, 0.1);
+    border: 1px solid rgba(52, 199, 89, 0.28);
+    border-radius: 50px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: rgb(52, 199, 89);
+    letter-spacing: 0.04em;
+    animation: pulse-green 2.8s ease-in-out infinite;
+    width: fit-content;
+}
+
+.open-to-work::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    min-width: 6px;
+    background: rgb(52, 199, 89);
+    border-radius: 50%;
+    animation: pulse-dot 2.8s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Company Initial Monogram
+═══════════════════════════════════════════════════════════════ */
+.company-initial {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(130, 90, 255, 0.32), rgba(70, 40, 200, 0.18));
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.88);
+    letter-spacing: -0.02em;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Current Job Badge
+═══════════════════════════════════════════════════════════════ */
+.current-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 7px;
+    background: rgba(52, 199, 89, 0.12);
+    border: 1px solid rgba(52, 199, 89, 0.3);
+    border-radius: 50px;
+    color: rgb(52, 199, 89);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-left: 5px;
+    vertical-align: middle;
+    text-transform: uppercase;
 }

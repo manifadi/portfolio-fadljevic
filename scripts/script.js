@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
             'tooltip.cv': 'Curriculum Vitae',
             
             // Profil-Bereich
-            'profile.title': 'Digital Creative Specialist',
-            'profile.bio': 'I\'m a 24 year old Media-Technologist with an educational background spanning over 8 years in programming and creative media. During my studies, I\'ve developed skills in creating digital projects.',
+            'profile.title': 'UI/UX Designer & Media Technologist',
+            'profile.bio': 'Media Technologist & Designer from Vienna. I cover the full creative pipeline — from UI/UX design and brand visuals to photo & video production and AI-assisted web development. Open to hybrid opportunities in Vienna.',
             'profile.location': 'Vienna, Austria',
             
             // Überschriften
@@ -74,9 +74,11 @@ document.addEventListener('DOMContentLoaded', function() {
             'portfolio.view.more': 'View more →',
             
             // Erfahrung und Ausbildung
-            'experience.marketing': 'Marketing',
-            'experience.media': 'Media Assistant',
-            'experience.intern': 'Intern',
+            'experience.vorauerfriends': 'Digital Consultant',
+            'experience.klampfer': 'Marketing & Content Creation',
+            'experience.lask': 'Graphic Design',
+            'experience.media': 'Media Production',
+            'experience.intern': 'Internship',
             'education.bachelor': 'Bachelor of Science',
             
             // Sprach-Umschalter
@@ -93,8 +95,8 @@ document.addEventListener('DOMContentLoaded', function() {
             'tooltip.cv': 'Lebenslauf',
             
             // Profil-Bereich
-            'profile.title': 'Digital Creative Specialist',
-            'profile.bio': 'Ich bin ein 24-jähriger Medientechniker mit einer über 8-jährigen Ausbildung im Bereich Programmierung und kreative Medien. Während meines Studiums habe ich Fähigkeiten in der Erstellung digitaler Projekte entwickelt.',
+            'profile.title': 'UI/UX Designer & Medientechniker',
+            'profile.bio': 'Medientechniker & Designer aus Wien. Ich decke die gesamte kreative Pipeline ab – von UI/UX Design und Markengrafiken über Foto- & Videoproduktion bis hin zu AI-gestützter Web-Entwicklung. Offen für Hybrid-Stellen in Wien.',
             'profile.location': 'Wien, Österreich',
             
             // Überschriften
@@ -125,9 +127,11 @@ document.addEventListener('DOMContentLoaded', function() {
             'portfolio.view.more': 'Mehr anzeigen →',
             
             // Erfahrung und Ausbildung
-            'experience.marketing': 'Marketing',
-            'experience.media': 'Medien-Assistent',
-            'experience.intern': 'Praktikant',
+            'experience.vorauerfriends': 'Digital Consultant',
+            'experience.klampfer': 'Marketing & Content Creation',
+            'experience.lask': 'Grafikdesign',
+            'experience.media': 'Medienproduktion',
+            'experience.intern': 'Praktikum',
             'education.bachelor': 'Bachelor of Science',
             
             // Sprach-Umschalter
@@ -215,18 +219,14 @@ document.addEventListener('DOMContentLoaded', function() {
         // Erfahrung und Ausbildung aktualisieren
         document.querySelectorAll('.experience-entry').forEach(entry => {
             const title = entry.querySelector('h4').textContent;
-            if (title === 'Marketing' || title === translations.de['experience.marketing']) {
-                entry.querySelector('h4').textContent = translations[language]['experience.marketing'];
-            } else if (title === 'Media Assistant' || title === translations.de['experience.media']) {
+            if (title === 'Digital Consultant' || title === translations.de['experience.vorauerfriends']) {
+                entry.querySelector('h4').textContent = translations[language]['experience.vorauerfriends'];
+            } else if (title === 'Marketing & Content Creation' || title === translations.de['experience.klampfer']) {
+                entry.querySelector('h4').textContent = translations[language]['experience.klampfer'];
+            } else if (title === 'Graphic Design' || title === translations.de['experience.lask']) {
+                entry.querySelector('h4').textContent = translations[language]['experience.lask'];
+            } else if (title === 'Media Production' || title === translations.de['experience.media']) {
                 entry.querySelector('h4').textContent = translations[language]['experience.media'];
-            }
-            
-            // Intern-Text aktualisieren
-            const dateText = entry.querySelector('.date').textContent;
-            if (dateText.includes('Intern') || dateText.includes(translations.de['experience.intern'])) {
-                const updatedText = dateText.replace('Intern', translations[language]['experience.intern'])
-                                          .replace(translations.de['experience.intern'], translations[language]['experience.intern']);
-                entry.querySelector('.date').textContent = updatedText;
             }
         });
         
