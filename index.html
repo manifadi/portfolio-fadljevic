@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title data-i18n="meta.title">Manuel Fadljevic - Web Developer</title>
-    <link rel="icon" type="image/png" href="./assets/ico/favicon.ico"/>
-    <link rel="icon" type="image/png" href="./assets/ico/favicon-portfolio.png"/>
+    <link rel="icon" type="image/png" href="./assets/ico/favicon.ico" />
+    <link rel="icon" type="image/png" href="./assets/ico/favicon-portfolio.png" />
     <!-- CSS Dateien -->
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/portfolio.css">
     <link rel="stylesheet" href="styles/transitions.css">
+    <link rel="stylesheet" href="styles/effects.css">
 
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -21,6 +23,7 @@
     <!-- imagesLoaded für bessere Masonry-Performance -->
     <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
 </head>
+
 <body>
     <div class="parent-layout">
         <nav class="side-menu menu-begin-transition">
@@ -71,19 +74,21 @@
                     <div class="language-selector">
                         <span data-tooltip="Umstellen auf Deutsch">EN</span>
                     </div>
-                    
+
                     <div class="profile-info">
                         <h1>Manuel Fadljevic</h1>
                         <h2>Digital Creative Specialist</h2>
                         <p class="location"><i class="fas fa-map-marker-alt"></i> Vienna, Austria</p>
-                        <p class="bio">I'm a 24 year old Media-Technologist with an educational background spanning over 8 years in programming and creative media. During my studies, I've developed skills in creating digital projects.</p>
+                        <p class="bio">I'm a 24 year old Media-Technologist with an educational background spanning over
+                            8 years in programming and creative media. During my studies, I've developed skills in
+                            creating digital projects.</p>
                     </div>
                 </div>
                 <div class="profile-image">
                     <img src="./assets/Profilbild komprimiert.png" alt="Manuel Fadljevic">
                 </div>
             </div>
-            
+
             <!-- Weitere Informationen (Profil-Ansicht) -->
             <div class="more-information-box">
                 <div class="flex-vertical techandtools">
@@ -95,34 +100,58 @@
                         <div class="box-body">
                             <!-- Technologie-Icons -->
                             <div class="tech-icons desktop">
-                                <div class="tech-icon" data-tooltip="Angular"><img src="./assets/icons/angular-icon.svg" alt="Angular"></div>
-                                <div class="tech-icon" data-tooltip="TypeScript"><img src="./assets/icons/typescript-icon.svg" alt="TypeScript"></div>
-                                <div class="tech-icon" data-tooltip="HTML5"><img src="./assets/icons/html-icon.svg" alt="HTML5"></div>
-                                <div class="tech-icon" data-tooltip="CSS3"><img src="./assets/icons/css-icon.svg" alt="CSS3"></div>
-                                <div class="tech-icon" data-tooltip="JavaScript"><img src="./assets/icons/javascript-icon.svg" alt="JavaScript"></div>
-                                <div class="tech-icon" data-tooltip="Python"><img src="./assets/icons/python-icon.svg" alt="Python"></div>
+                                <div class="tech-icon" data-tooltip="Angular"><img src="./assets/icons/angular-icon.svg"
+                                        alt="Angular"></div>
+                                <div class="tech-icon" data-tooltip="TypeScript"><img
+                                        src="./assets/icons/typescript-icon.svg" alt="TypeScript"></div>
+                                <div class="tech-icon" data-tooltip="HTML5"><img src="./assets/icons/html-icon.svg"
+                                        alt="HTML5"></div>
+                                <div class="tech-icon" data-tooltip="CSS3"><img src="./assets/icons/css-icon.svg"
+                                        alt="CSS3"></div>
+                                <div class="tech-icon" data-tooltip="JavaScript"><img
+                                        src="./assets/icons/javascript-icon.svg" alt="JavaScript"></div>
+                                <div class="tech-icon" data-tooltip="Python"><img src="./assets/icons/python-icon.svg"
+                                        alt="Python"></div>
                             </div>
                             <div class="tech-icons desktop">
-                                <div class="tech-icon" data-tooltip="C"><img src="./assets/icons/c-icon.svg" alt="C"></div>
-                                <div class="tech-icon" data-tooltip="React"><img src="./assets/icons/react-icon.svg" alt="React"></div>
-                                <div class="tech-icon" data-tooltip="MongoDB"><img src="./assets/icons/mongodb-icon.svg" alt="MongoDB"></div>
-                                <div class="tech-icon" data-tooltip="GitHub"><img src="./assets/icons/github-icon.svg" alt="GitHub"></div>
-                                <div class="tech-icon" data-tooltip="MySQL"><img src="./assets/icons/mysql-icon.svg" alt="MySQL"></div>
-                                <div class="tech-icon" data-tooltip="Java"><img src="./assets/icons/java-icon.svg" alt="Java"></div>
+                                <div class="tech-icon" data-tooltip="C"><img src="./assets/icons/c-icon.svg" alt="C">
+                                </div>
+                                <div class="tech-icon" data-tooltip="React"><img src="./assets/icons/react-icon.svg"
+                                        alt="React"></div>
+                                <div class="tech-icon" data-tooltip="MongoDB"><img src="./assets/icons/mongodb-icon.svg"
+                                        alt="MongoDB"></div>
+                                <div class="tech-icon" data-tooltip="GitHub"><img src="./assets/icons/github-icon.svg"
+                                        alt="GitHub"></div>
+                                <div class="tech-icon" data-tooltip="MySQL"><img src="./assets/icons/mysql-icon.svg"
+                                        alt="MySQL"></div>
+                                <div class="tech-icon" data-tooltip="Java"><img src="./assets/icons/java-icon.svg"
+                                        alt="Java"></div>
                             </div>
                             <div class="tech-icons mobile-icons">
-                                <div class="tech-icon" data-tooltip="Angular"><img src="./assets/icons/angular-icon.svg" alt="Angular"></div>
-                                <div class="tech-icon" data-tooltip="TypeScript"><img src="./assets/icons/typescript-icon.svg" alt="TypeScript"></div>
-                                <div class="tech-icon" data-tooltip="HTML5"><img src="./assets/icons/html-icon.svg" alt="HTML5"></div>
-                                <div class="tech-icon" data-tooltip="CSS3"><img src="./assets/icons/css-icon.svg" alt="CSS3"></div>
-                                <div class="tech-icon" data-tooltip="JavaScript"><img src="./assets/icons/javascript-icon.svg" alt="JavaScript"></div>
-                                <div class="tech-icon" data-tooltip="Python"><img src="./assets/icons/python-icon.svg" alt="Python"></div>
-                                <div class="tech-icon" data-tooltip="C"><img src="./assets/icons/c-icon.svg" alt="C"></div>
-                                <div class="tech-icon" data-tooltip="React"><img src="./assets/icons/react-icon.svg" alt="React"></div>
-                                <div class="tech-icon" data-tooltip="MongoDB"><img src="./assets/icons/mongodb-icon.svg" alt="MongoDB"></div>
-                                <div class="tech-icon" data-tooltip="GitHub"><img src="./assets/icons/github-icon.svg" alt="GitHub"></div>
-                                <div class="tech-icon" data-tooltip="MySQL"><img src="./assets/icons/mysql-icon.svg" alt="MySQL"></div>
-                                <div class="tech-icon" data-tooltip="Java"><img src="./assets/icons/java-icon.svg" alt="Java"></div>
+                                <div class="tech-icon" data-tooltip="Angular"><img src="./assets/icons/angular-icon.svg"
+                                        alt="Angular"></div>
+                                <div class="tech-icon" data-tooltip="TypeScript"><img
+                                        src="./assets/icons/typescript-icon.svg" alt="TypeScript"></div>
+                                <div class="tech-icon" data-tooltip="HTML5"><img src="./assets/icons/html-icon.svg"
+                                        alt="HTML5"></div>
+                                <div class="tech-icon" data-tooltip="CSS3"><img src="./assets/icons/css-icon.svg"
+                                        alt="CSS3"></div>
+                                <div class="tech-icon" data-tooltip="JavaScript"><img
+                                        src="./assets/icons/javascript-icon.svg" alt="JavaScript"></div>
+                                <div class="tech-icon" data-tooltip="Python"><img src="./assets/icons/python-icon.svg"
+                                        alt="Python"></div>
+                                <div class="tech-icon" data-tooltip="C"><img src="./assets/icons/c-icon.svg" alt="C">
+                                </div>
+                                <div class="tech-icon" data-tooltip="React"><img src="./assets/icons/react-icon.svg"
+                                        alt="React"></div>
+                                <div class="tech-icon" data-tooltip="MongoDB"><img src="./assets/icons/mongodb-icon.svg"
+                                        alt="MongoDB"></div>
+                                <div class="tech-icon" data-tooltip="GitHub"><img src="./assets/icons/github-icon.svg"
+                                        alt="GitHub"></div>
+                                <div class="tech-icon" data-tooltip="MySQL"><img src="./assets/icons/mysql-icon.svg"
+                                        alt="MySQL"></div>
+                                <div class="tech-icon" data-tooltip="Java"><img src="./assets/icons/java-icon.svg"
+                                        alt="Java"></div>
                             </div>
                         </div>
                     </div>
@@ -135,16 +164,21 @@
                         <div class="box-body">
                             <!-- Tool-Icons -->
                             <div class="tool-icons">
-                                <div class="tool-icon" data-tooltip="Photoshop"><img src="./assets/icons/photoshop-icon.svg" alt="Photoshop"></div>
-                                <div class="tool-icon" data-tooltip="Figma"><img src="./assets/icons/figma-icon.svg" alt="Figma"></div>
-                                <div class="tool-icon" data-tooltip="VS Code"><img src="./assets/icons/vscode-icon.svg" alt="VS Code"></div>
-                                <div class="tool-icon" data-tooltip="Illustrator"><img src="./assets/icons/illustrator-icon.svg" alt="Illustrator"></div>
-                                <div class="tool-icon" data-tooltip="Premiere Pro"><img src="./assets/icons/primiere-icon.svg" alt="Premiere Pro"></div>
+                                <div class="tool-icon" data-tooltip="Photoshop"><img
+                                        src="./assets/icons/photoshop-icon.svg" alt="Photoshop"></div>
+                                <div class="tool-icon" data-tooltip="Figma"><img src="./assets/icons/figma-icon.svg"
+                                        alt="Figma"></div>
+                                <div class="tool-icon" data-tooltip="VS Code"><img src="./assets/icons/vscode-icon.svg"
+                                        alt="VS Code"></div>
+                                <div class="tool-icon" data-tooltip="Illustrator"><img
+                                        src="./assets/icons/illustrator-icon.svg" alt="Illustrator"></div>
+                                <div class="tool-icon" data-tooltip="Premiere Pro"><img
+                                        src="./assets/icons/primiere-icon.svg" alt="Premiere Pro"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Projekte -->
                 <div class="projects-box dark-glass">
                     <div class="box-header">
@@ -155,7 +189,7 @@
                         <!-- Projekte werden dynamisch aus der JSON-Datei geladen -->
                     </div>
                 </div>
-                
+
                 <div class="flex-vertical experience">
                     <div class="experience-box dark-glass">
                         <div class="box-header">
@@ -197,7 +231,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Ausbildung -->
                     <div class="education dark-glass">
                         <div class="box-header">
@@ -232,7 +266,7 @@
                         <button class="filter-btn" data-filter="uiux">UI/UX</button>
                     </div>
                 </div>
-                
+
                 <div class="portfolio-content">
                     <!-- Websites Section -->
                     <div class="portfolio-section websites active">
@@ -269,38 +303,54 @@
                     <!-- UI/UX Section -->
                     <div class="portfolio-section uiux">
                         <div class="grid-sizer"></div>
-                        
+
                         <div class="portfolio-item">
-                            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/hGi5gADltF2OlN94xUsio0/Fadljevic-PetPal?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+                            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450"
+                                src="https://embed.figma.com/design/hGi5gADltF2OlN94xUsio0/Fadljevic-PetPal?node-id=0-1&embed-host=share"
+                                allowfullscreen></iframe>
                         </div>
                         <div class="portfolio-item">
-                            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/x3UeyVBFqzQq5JDgUqEVGq/Carload?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+                            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450"
+                                src="https://embed.figma.com/design/x3UeyVBFqzQq5JDgUqEVGq/Carload?node-id=0-1&embed-host=share"
+                                allowfullscreen></iframe>
                         </div>
                         <div class="portfolio-item">
-                            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/ujnu1sdjctO8IOS1VwYqUz/AI-Website-Portfolio?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+                            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450"
+                                src="https://embed.figma.com/design/ujnu1sdjctO8IOS1VwYqUz/AI-Website-Portfolio?node-id=0-1&embed-host=share"
+                                allowfullscreen></iframe>
                         </div>
                         <div class="portfolio-item">
-                            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/UFp5XBfIgC0nEH3bs9TSYN/Holza_Design?node-id=202-3&embed-host=share" allowfullscreen></iframe>
+                            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450"
+                                src="https://embed.figma.com/design/UFp5XBfIgC0nEH3bs9TSYN/Holza_Design?node-id=202-3&embed-host=share"
+                                allowfullscreen></iframe>
                         </div>
                         <div class="portfolio-item">
-                            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/j7b9X64jvicfVeH3TWLebi/Korrekt-oder-Weg?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+                            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450"
+                                src="https://embed.figma.com/design/j7b9X64jvicfVeH3TWLebi/Korrekt-oder-Weg?node-id=0-1&embed-host=share"
+                                allowfullscreen></iframe>
                         </div>
                         <div class="portfolio-item">
-                            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/wsDvVjRiZRW9nA9M1UhnZr/OnePager?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+                            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450"
+                                src="https://embed.figma.com/design/wsDvVjRiZRW9nA9M1UhnZr/OnePager?node-id=0-1&embed-host=share"
+                                allowfullscreen></iframe>
                         </div>
                         <div class="portfolio-item">
-                            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/f83Bg1WUZl5TmmgtG2rNWI/Levis-Stundenplan---Redesign?node-id=1-3&embed-host=share" allowfullscreen></iframe>
+                            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450"
+                                src="https://embed.figma.com/design/f83Bg1WUZl5TmmgtG2rNWI/Levis-Stundenplan---Redesign?node-id=1-3&embed-host=share"
+                                allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <script src="scripts/script.js"></script>
     <script src="scripts/portfolio.js"></script>
     <script src="scripts/transitions.js"></script>
     <script src="scripts/projects.js"></script>
+    <script src="scripts/effects.js"></script>
 
 </body>
+
 </html>

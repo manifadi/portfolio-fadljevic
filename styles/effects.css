@@ -1,0 +1,251 @@
+/* ================================================================
+   Vision OS — Enhanced Effects | portfolio-fadljevic
+   ================================================================ */
+
+/* ═══════════════════════════════════════════════════════════════
+   Custom Cursor
+═══════════════════════════════════════════════════════════════ */
+.cursor-dot,
+.cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99999;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    will-change: left, top;
+}
+
+.cursor-dot {
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.92);
+    transition: width 0.15s ease, height 0.15s ease, opacity 0.15s ease;
+}
+
+.cursor-ring {
+    width: 30px;
+    height: 30px;
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
+    transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s ease,
+                opacity 0.2s ease;
+}
+
+body.cursor-hover .cursor-ring {
+    width: 52px;
+    height: 52px;
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+body.cursor-hover .cursor-dot {
+    width: 3px;
+    height: 3px;
+    opacity: 0.4;
+}
+
+body.cursor-hidden .cursor-dot,
+body.cursor-hidden .cursor-ring {
+    opacity: 0 !important;
+}
+
+body.has-custom-cursor,
+body.has-custom-cursor * {
+    cursor: none !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Ambient Mouse Light
+═══════════════════════════════════════════════════════════════ */
+.ambient-light {
+    position: fixed;
+    width: 900px;
+    height: 900px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.055) 0%, transparent 60%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: screen;
+    transition: left 1s cubic-bezier(0.16, 1, 0.3, 1),
+                top 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Subtle Background Drift
+═══════════════════════════════════════════════════════════════ */
+body {
+    background-size: 112% !important;
+    animation: bgDrift 35s ease-in-out infinite;
+}
+
+@keyframes bgDrift {
+    0%   { background-position: 48% 50%; }
+    33%  { background-position: 52% 48%; }
+    66%  { background-position: 50% 53%; }
+    100% { background-position: 48% 50%; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Specular Top-Edge Highlights  (Vision OS layered glass)
+═══════════════════════════════════════════════════════════════ */
+
+/* Inner dark-glass cards */
+.dark-glass {
+    position: relative;
+}
+
+.dark-glass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.4)  25%,
+        rgba(255, 255, 255, 0.68) 50%,
+        rgba(255, 255, 255, 0.4)  75%,
+        transparent 100%);
+    border-radius: 100px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Main content window */
+.content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.52) 25%,
+        rgba(255, 255, 255, 0.88) 50%,
+        rgba(255, 255, 255, 0.52) 75%,
+        transparent 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Side menu */
+.side-menu::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 22%;
+    right: 22%;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.52) 50%,
+        transparent);
+    border-radius: 100px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   3D Card Tilt  (applied via JS)
+═══════════════════════════════════════════════════════════════ */
+.tilt-card {
+    will-change: transform;
+    transition: transform 0.1s ease-out !important;
+}
+
+.tilt-card.tilt-reset {
+    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Portfolio Section Transition
+═══════════════════════════════════════════════════════════════ */
+@keyframes sectionSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.portfolio-section.animate-in {
+    animation: sectionSlideIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Portfolio Item Stagger  (CSS-animation approach — no opacity:0 risk)
+═══════════════════════════════════════════════════════════════ */
+@keyframes staggerIn {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.portfolio-item.stagger-in {
+    animation: staggerIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Enhanced Glass Tooltips
+═══════════════════════════════════════════════════════════════ */
+.side-menu .menu-item .tooltip {
+    background: rgba(8, 8, 18, 0.72) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.13) !important;
+    border-radius: 8px !important;
+    font-size: 12px !important;
+    padding: 6px 12px !important;
+    letter-spacing: 0.025em;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35) !important;
+}
+
+.tech-icon::after,
+.tool-icon::after {
+    background: rgba(8, 8, 18, 0.72) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.13) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Active Filter Pill
+═══════════════════════════════════════════════════════════════ */
+.filter-btn.active {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 50px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Hover Glow on Cards
+═══════════════════════════════════════════════════════════════ */
+.project-card:hover {
+    box-shadow: 0 8px 34px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.07);
+}
+
+.portfolio-item:hover {
+    box-shadow: 0 12px 42px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.07);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Menu item — smooth magnetic transition override
+═══════════════════════════════════════════════════════════════ */
+.side-menu .menu-item {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    will-change: transform;
+}

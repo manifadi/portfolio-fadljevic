@@ -20,15 +20,6 @@
     },
     {
       "id": 3,
-      "title": "Coaching",
-      "description": "Website for a neuromental coach",
-      "image": "./assets/project-images/nmt-website.jpg",
-      "category": "websites",
-      "priority": 3,
-      "url": "https://nmt-enzendorfer.com/"
-    },
-    {
-      "id": 4,
       "title": "Yoga",
       "description": "Website for a yoga instructor",
       "image": "./assets/project-images/yoga-website.jpg",
@@ -37,7 +28,7 @@
       "url": "https://yoga-touch.at"
     },
     {
-      "id": 5,
+      "id": 4,
       "title": "Finanzexperte",
       "description": "Website für einen Finanzexperten",
       "image": "./assets/project-images/finanzexperte.jpg",
@@ -46,7 +37,7 @@
       "url": "https://manifadi.github.io/florianwalch/"
     },
     {
-      "id": 6,
+      "id": 5,
       "title": "GFS",
       "description": "Website für ein Finanzunternehmen",
       "image": "./assets/project-images/golden-website.jpg",

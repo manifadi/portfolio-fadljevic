@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'linkedin': 'https://www.linkedin.com/in/manuel-fadljevic/',
         'github': 'https://github.com/manifadi',
         'instagram': 'https://www.instagram.com/_maneyy/',
-        'cv': 'https://drive.google.com/file/d/1D3lpFMqoU1El5InZ97wyD1jDT5tsvcu7/view?usp=sharing'
+        'cv': 'https://drive.google.com/file/d/1jE3kzQDhrsvC4fZNia1g9QUyZuDv7jDv/view?usp=sharing'
     };
     
     // Website-Projekt-Links (URLs für die einzelnen Website-Projekte)
