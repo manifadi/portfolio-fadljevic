@@ -247,10 +247,11 @@ body {
 }
 
 .content .title-box .text-left {
-    flex: 1.2;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 15%;
+    justify-content: space-between;
+    gap: 0.75rem;
 }
 
 .content .title-box .text-left h1 {
@@ -309,15 +310,18 @@ p {
 }
 
 .content .title-box .profile-image {
-    flex: 1;
-    overflow: hidden;
+    flex: 0 0 auto;
+    width: 34%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 }
 
 .content .title-box .profile-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: top;
+    object-fit: contain;
+    object-position: center bottom;
 }
 
 .content .more-information-box {
@@ -711,6 +715,10 @@ p {
         font-size: 1.4rem;
     }
 
+    .content .title-box .profile-image {
+        width: 32%;
+    }
+
     .content .more-information-box {
         gap: 1.5rem;
     }
@@ -876,11 +884,25 @@ p {
 
     .content .title-box .text-left {
         order: 2;
-        gap: 1rem;
+        gap: 0.75rem;
+        justify-content: flex-start;
     }
 
     .content .title-box .profile-image {
-        display: none;
+        display: flex;
+        order: 1;
+        width: 100%;
+        height: 180px;
+        justify-content: center;
+        align-items: flex-end;
+        flex: 0 0 auto;
+    }
+
+    .content .title-box .profile-image img {
+        height: 100%;
+        width: auto;
+        object-fit: contain;
+        object-position: center bottom;
     }
 
     .content .title-box .text-left h1 {
@@ -986,7 +1008,7 @@ p {
     }
 
     .content .title-box .profile-image {
-        max-height: 180px;
+        height: 150px;
     }
 
     .dark-glass {
@@ -1049,7 +1071,7 @@ p {
     }
 
     .content .title-box .profile-image {
-        max-height: 150px;
+        height: 120px;
     }
 
     .dark-glass {
