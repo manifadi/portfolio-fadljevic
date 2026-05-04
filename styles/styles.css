@@ -436,14 +436,11 @@ p {
 
 /* EXPERIENCE BOX (bento grid — left column) */
 .experience-box {
-    height: 100%;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
 }
 
 .experience-box .box-body {
-    flex: 1;
     overflow-y: auto;
 }
 
