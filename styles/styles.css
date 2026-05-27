@@ -383,20 +383,22 @@ body {
 
 .language-selector span:hover::after { opacity: 1; visibility: visible; }
 
-/* Profile image */
+/* Profile image — height-first: fills full title-box height,
+   width follows aspect ratio; shrinks with width when viewport narrows */
 .title-box .profile-image {
     flex: 0 0 auto;
-    width: clamp(110px, 17vw, 220px);
-    align-self: flex-end;
+    align-self: stretch;        /* fill full height of title-box */
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    max-width: 36%;              /* prevents image dominating layout */
+    min-width: clamp(90px, 14vw, 180px);
+    overflow: hidden;
 }
 
 .title-box .profile-image img {
+    height: 100%;
     width: 100%;
-    height: auto;
-    max-height: clamp(130px, 21vh, 260px);
     object-fit: contain;
     object-position: center bottom;
 }
